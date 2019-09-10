@@ -107,6 +107,7 @@ export class UserMgmtComponent implements OnInit, OnDestroy {
   }
 
   transition() {
+    // this.router.navigate(['/admin/user-management'], {
     this.router.navigate(['/admin/user-management'], {
       queryParams: {
         page: this.page,

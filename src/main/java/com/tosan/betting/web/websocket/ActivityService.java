@@ -7,6 +7,7 @@ import com.tosan.betting.web.websocket.dto.ActivityDTO;
 import java.security.Principal;
 import java.time.Instant;
 
+import com.tosan.betting.web.websocket.dto.MessageDTO;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.context.ApplicationListener;
@@ -38,11 +39,27 @@ public class ActivityService implements ApplicationListener<SessionDisconnectEve
         return activityDTO;
     }
 
+    @MessageMapping("/topic/msgactivity")
+    @SendTo("/topic/msgtracker")
+    public MessageDTO sendMessage(@Payload MessageDTO messageDTO, StompHeaderAccessor stompHeaderAccessor, Principal principal) {
+        messageDTO.setUserLogin("kkkkkkkkkkkkkkk");
+        messageDTO.setSessionId(stompHeaderAccessor.getSessionId());
+        messageDTO.setIpAddress(stompHeaderAccessor.getSessionAttributes().get(IP_ADDRESS).toString());
+        messageDTO.setTime(Instant.now());
+        log.debug("Sending user message tracking data {}", messageDTO);
+        return messageDTO;
+    }
+
     @Override
     public void onApplicationEvent(SessionDisconnectEvent event) {
         ActivityDTO activityDTO = new ActivityDTO();
         activityDTO.setSessionId(event.getSessionId());
         activityDTO.setPage("logout");
         messagingTemplate.convertAndSend("/topic/tracker", activityDTO);
+
+        MessageDTO messageDTO = new MessageDTO();
+        messageDTO.setSessionId(event.getSessionId());
+        messageDTO.setMessage("logout message");
+        messagingTemplate.convertAndSend("/topic/msgtracker", messageDTO);
     }
 }

@@ -7,6 +7,7 @@ import { Observable, Subject } from 'rxjs';
 import { SERVER_API_URL } from 'app/app.constants';
 import { Account } from 'app/core/user/account.model';
 import { JhiTrackerService } from '../tracker/tracker.service';
+import {TrackerMsgService} from "app/core/msgtracker/trackermsg.service";
 
 @Injectable({ providedIn: 'root' })
 export class AccountService {
@@ -18,7 +19,8 @@ export class AccountService {
     private languageService: JhiLanguageService,
     private sessionStorage: SessionStorageService,
     private http: HttpClient,
-    private trackerService: JhiTrackerService
+    private trackerService: JhiTrackerService,
+    private msgtrackerService: TrackerMsgService
   ) {}
 
   fetch(): Observable<HttpResponse<Account>> {
@@ -84,6 +86,7 @@ export class AccountService {
           this.userIdentity = account;
           this.authenticated = true;
           this.trackerService.connect();
+          this.msgtrackerService.connect();
           // After retrieve the account info, the language will be changed to
           // the user's preferred language configured in the account setting
           if (this.userIdentity.langKey) {
