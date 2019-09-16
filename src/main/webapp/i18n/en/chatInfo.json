@@ -1,0 +1,28 @@
+{
+  "bettingApp": {
+    "chatInfo": {
+      "home": {
+        "title": "Chat Infos",
+        "createLabel": "Create a new Chat Info",
+        "createOrEditLabel": "Create or edit a Chat Info",
+        "notFound": "No Chat Info found"
+      },
+      "created": "A new Chat Info is created with identifier {{ param }}",
+      "updated": "A Chat Info is updated with identifier {{ param }}",
+      "deleted": "A Chat Info is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Chat Info {{ id }}?"
+      },
+      "detail": {
+        "title": "Chat Info"
+      },
+      "message": "Message",
+      "photo": "Photo",
+      "acceptByAdmin": "Accept By Admin",
+      "fromUser": "From User",
+      "toUser": "To User",
+      "sentDate": "Sent Date",
+      "isDeleted": "Is Deleted"
+    }
+  }
+}

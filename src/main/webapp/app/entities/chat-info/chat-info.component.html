@@ -1,0 +1,74 @@
+<div>
+    <h2 id="page-heading">
+        <span jhiTranslate="bettingApp.chatInfo.home.title">Chat Infos</span>
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-chat-info" [routerLink]="['/chat-info/new']">
+            <fa-icon [icon]="'plus'"></fa-icon>
+            <span  jhiTranslate="bettingApp.chatInfo.home.createLabel">
+            Create new Chat Info
+            </span>
+        </button>
+    </h2>
+    <jhi-alert></jhi-alert>
+    <br/>
+    <div class="alert alert-warning" *ngIf="chatInfos?.length === 0">
+        <span jhiTranslate="bettingApp.chatInfo.home.notFound">No chatInfos found</span>
+    </div>
+    <div class="table-responsive" *ngIf="chatInfos?.length > 0">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+            <th><span jhiTranslate="global.field.id">ID</span></th>
+            <th><span jhiTranslate="bettingApp.chatInfo.message">Message</span></th>
+            <th><span jhiTranslate="bettingApp.chatInfo.photo">Photo</span></th>
+            <th><span jhiTranslate="bettingApp.chatInfo.acceptByAdmin">Accept By Admin</span></th>
+            <th><span jhiTranslate="bettingApp.chatInfo.fromUser">From User</span></th>
+            <th><span jhiTranslate="bettingApp.chatInfo.toUser">To User</span></th>
+            <th><span jhiTranslate="bettingApp.chatInfo.sentDate">Sent Date</span></th>
+            <th><span jhiTranslate="bettingApp.chatInfo.isDeleted">Is Deleted</span></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let chatInfo of chatInfos ;trackBy: trackId">
+                <td><a [routerLink]="['/chat-info', chatInfo.id, 'view' ]">{{chatInfo.id}}</a></td>
+                <td>{{chatInfo.message}}</td>
+                <td>
+                    <a *ngIf="chatInfo.photo" (click)="openFile(chatInfo.photoContentType, chatInfo.photo)">
+                        <img [src]="'data:' + chatInfo.photoContentType + ';base64,' + chatInfo.photo" style="max-height: 30px;" alt="chatInfo image"/>
+                    </a>
+                    <span *ngIf="chatInfo.photo">{{chatInfo.photoContentType}}, {{byteSize(chatInfo.photo)}}</span>
+                </td>
+                <td>{{chatInfo.acceptByAdmin}}</td>
+                <td>{{chatInfo.fromUser}}</td>
+                <td>{{chatInfo.toUser}}</td>
+                <td>{{chatInfo.sentDate | date:'mediumDate'}}</td>
+                <td>{{chatInfo.isDeleted}}</td>
+                <td class="text-right">
+                    <div class="btn-group">
+                        <button type="submit"
+                                [routerLink]="['/chat-info', chatInfo.id, 'view' ]"
+                                class="btn btn-info btn-sm">
+                            <fa-icon [icon]="'eye'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/chat-info', chatInfo.id, 'edit']"
+                                class="btn btn-primary btn-sm">
+                            <fa-icon [icon]="'pencil-alt'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', 'chat-info', { outlets: { popup: chatInfo.id + '/delete'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-danger btn-sm">
+                            <fa-icon [icon]="'times'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

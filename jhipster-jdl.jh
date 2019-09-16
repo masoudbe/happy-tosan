@@ -1,0 +1,14 @@
+entity ChatInfo {
+	message String
+	photo ImageBlob
+    acceptByAdmin Boolean
+    fromUser String
+    toUser String
+    sentDate LocalDate
+    isDeleted Boolean
+}
+
+
+
+
+
