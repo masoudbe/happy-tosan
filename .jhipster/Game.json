@@ -1,0 +1,43 @@
+{
+    "name": "Game",
+    "fields": [
+        {
+            "fieldName": "team1Name",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "team2Name",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "team1Goal",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "team2Goal",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "groupName",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "leagueNumber",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "date",
+            "fieldType": "LocalDate"
+        }
+    ],
+    "relationships": [],
+    "changelogDate": "20190919091336",
+    "entityTableName": "game",
+    "dto": "no",
+    "pagination": "no",
+    "service": "no",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*"
+}

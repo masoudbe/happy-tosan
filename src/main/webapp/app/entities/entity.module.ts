@@ -7,6 +7,10 @@ import { RouterModule } from '@angular/router';
       {
         path: 'chat-info',
         loadChildren: './chat-info/chat-info.module#BettingChatInfoModule'
+      },
+      {
+        path: 'game',
+        loadChildren: './game/game.module#BettingGameModule'
       }
       /* jhipster-needle-add-entity-route - JHipster will add entity modules routes here */
     ])

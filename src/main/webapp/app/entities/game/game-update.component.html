@@ -1,0 +1,63 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+            <h2 id="jhi-game-heading" jhiTranslate="bettingApp.game.home.createOrEditLabel">Create or edit a Game</h2>
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+                <div class="form-group" [hidden]="!editForm.get('id').value">
+                    <label for="id" jhiTranslate="global.field.id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id" formControlName="id"
+                        readonly />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="bettingApp.game.team1Name" for="field_team1Name">Team 1 Name</label>
+                    <input type="text" class="form-control" name="team1Name" id="field_team1Name"
+                           formControlName="team1Name"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="bettingApp.game.team2Name" for="field_team2Name">Team 2 Name</label>
+                    <input type="text" class="form-control" name="team2Name" id="field_team2Name"
+                           formControlName="team2Name"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="bettingApp.game.team1Goal" for="field_team1Goal">Team 1 Goal</label>
+                    <input type="number" class="form-control" name="team1Goal" id="field_team1Goal"
+                           formControlName="team1Goal"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="bettingApp.game.team2Goal" for="field_team2Goal">Team 2 Goal</label>
+                    <input type="number" class="form-control" name="team2Goal" id="field_team2Goal"
+                           formControlName="team2Goal"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="bettingApp.game.groupName" for="field_groupName">Group Name</label>
+                    <input type="text" class="form-control" name="groupName" id="field_groupName"
+                           formControlName="groupName"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="bettingApp.game.leagueNumber" for="field_leagueNumber">League Number</label>
+                    <input type="number" class="form-control" name="leagueNumber" id="field_leagueNumber"
+                           formControlName="leagueNumber"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="bettingApp.game.date" for="field_date">Date</label>
+                    <div class="input-group">
+                        <input id="field_date" type="text" class="form-control" name="date" ngbDatepicker  #dateDp="ngbDatepicker" formControlName="date"/>
+                        <span class="input-group-append">
+                            <button type="button" class="btn btn-secondary" (click)="dateDp.toggle()"><fa-icon [icon]="'calendar-alt'"></fa-icon></button>
+                        </span>
+                    </div>
+                </div>
+
+            </div>
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary"  (click)="previousState()">
+                    <fa-icon [icon]="'ban'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+                </button>
+                <button type="submit" id="save-entity" [disabled]="editForm.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon [icon]="'save'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

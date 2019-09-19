@@ -1,0 +1,14 @@
+entity Game {
+	team1Name String
+    team2Name String
+	team1Goal Integer
+    team2Goal Integer
+    groupName String
+    leagueNumber Integer
+    date LocalDate
+}
+
+
+
+
+
