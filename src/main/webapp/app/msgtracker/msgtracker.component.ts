@@ -38,4 +38,8 @@ export class MsgtrackerComponent implements OnInit, OnDestroy {
   sendMessage(){
     this.msgService.sendActivity();
   }
+
+  onSearchChange(searchValue: string): void {
+    this.sendMessage();
+  }
 }

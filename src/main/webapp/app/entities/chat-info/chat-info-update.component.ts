@@ -7,6 +7,7 @@ import * as moment from 'moment';
 import { JhiAlertService, JhiDataUtils } from 'ng-jhipster';
 import { IChatInfo, ChatInfo } from 'app/shared/model/chat-info.model';
 import { ChatInfoService } from './chat-info.service';
+import {TrackerMsgService} from "app/core/msgtracker/trackermsg.service";
 
 @Component({
   selector: 'jhi-chat-info-update',
@@ -34,8 +35,11 @@ export class ChatInfoUpdateComponent implements OnInit {
     protected chatInfoService: ChatInfoService,
     protected elementRef: ElementRef,
     protected activatedRoute: ActivatedRoute,
-    private fb: FormBuilder
-  ) {}
+    private fb: FormBuilder,
+    protected msgService: TrackerMsgService
+  ) {
+    this.msgService.connect();
+  }
 
   ngOnInit() {
     this.isSaving = false;
@@ -135,13 +139,19 @@ export class ChatInfoUpdateComponent implements OnInit {
 
   protected onSaveSuccess() {
     this.isSaving = false;
+    this.sendMessage();
     this.previousState();
   }
 
   protected onSaveError() {
     this.isSaving = false;
   }
+
   protected onError(errorMessage: string) {
     this.jhiAlertService.error(errorMessage, null, null);
+  }
+
+  sendMessage(){
+    this.msgService.sendActivity();
   }
 }

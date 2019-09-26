@@ -1,12 +1,13 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
-import { HttpErrorResponse, HttpResponse } from '@angular/common/http';
-import { Subscription } from 'rxjs';
-import { filter, map } from 'rxjs/operators';
-import { JhiEventManager, JhiAlertService, JhiDataUtils } from 'ng-jhipster';
+import {Component, OnInit, OnDestroy} from '@angular/core';
+import {HttpErrorResponse, HttpResponse} from '@angular/common/http';
+import {Subscription} from 'rxjs';
+import {filter, map} from 'rxjs/operators';
+import {JhiEventManager, JhiAlertService, JhiDataUtils} from 'ng-jhipster';
 
-import { IChatInfo } from 'app/shared/model/chat-info.model';
-import { AccountService } from 'app/core';
-import { ChatInfoService } from './chat-info.service';
+import {IChatInfo} from 'app/shared/model/chat-info.model';
+import {AccountService} from 'app/core';
+import {ChatInfoService} from './chat-info.service';
+import {TrackerMsgService} from "app/core/msgtracker/trackermsg.service";
 
 @Component({
   selector: 'jhi-chat-info',
@@ -17,13 +18,14 @@ export class ChatInfoComponent implements OnInit, OnDestroy {
   currentAccount: any;
   eventSubscriber: Subscription;
 
-  constructor(
-    protected chatInfoService: ChatInfoService,
-    protected jhiAlertService: JhiAlertService,
-    protected dataUtils: JhiDataUtils,
-    protected eventManager: JhiEventManager,
-    protected accountService: AccountService
-  ) {}
+  constructor(protected chatInfoService: ChatInfoService,
+              protected jhiAlertService: JhiAlertService,
+              protected dataUtils: JhiDataUtils,
+              protected eventManager: JhiEventManager,
+              protected accountService: AccountService,
+              protected msgService: TrackerMsgService) {
+    this.msgService.connect();
+  }
 
   loadAll() {
     this.chatInfoService
@@ -46,10 +48,16 @@ export class ChatInfoComponent implements OnInit, OnDestroy {
       this.currentAccount = account;
     });
     this.registerChangeInChatInfos();
+
+    this.msgService.subscribe();
+    this.msgService.receive().subscribe(activity => {
+      this.loadAll();
+    });
   }
 
   ngOnDestroy() {
     this.eventManager.destroy(this.eventSubscriber);
+    this.msgService.unsubscribe();
   }
 
   trackId(index: number, item: IChatInfo) {
@@ -71,4 +79,5 @@ export class ChatInfoComponent implements OnInit, OnDestroy {
   protected onError(errorMessage: string) {
     this.jhiAlertService.error(errorMessage, null, null);
   }
+
 }

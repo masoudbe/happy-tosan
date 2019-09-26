@@ -1,6 +1,7 @@
 <div>
     <h2 id="tracker-page-heading" jhiTranslate="tracker.title">Real-time user activities</h2>
     <button (click)="sendMessage()">send</button>
+    <input type="text" class="form-control" (input)="onSearchChange($event.target.value)">
     <div class="table-responsive">
         <table class="table table-striped">
             <thead>
