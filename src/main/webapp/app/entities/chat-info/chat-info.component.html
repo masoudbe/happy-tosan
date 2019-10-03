@@ -17,32 +17,32 @@
         <table class="table table-striped">
             <thead>
             <tr>
-            <th><span jhiTranslate="global.field.id">ID</span></th>
+            <!--<th><span jhiTranslate="global.field.id">ID</span></th>-->
             <th><span jhiTranslate="bettingApp.chatInfo.message">Message</span></th>
-            <th><span jhiTranslate="bettingApp.chatInfo.photo">Photo</span></th>
-            <th><span jhiTranslate="bettingApp.chatInfo.acceptByAdmin">Accept By Admin</span></th>
+            <!--<th><span jhiTranslate="bettingApp.chatInfo.photo">Photo</span></th>-->
+            <!--<th><span jhiTranslate="bettingApp.chatInfo.acceptByAdmin">Accept By Admin</span></th>-->
             <th><span jhiTranslate="bettingApp.chatInfo.fromUser">From User</span></th>
-            <th><span jhiTranslate="bettingApp.chatInfo.toUser">To User</span></th>
+            <!--<th><span jhiTranslate="bettingApp.chatInfo.toUser">To User</span></th>-->
             <th><span jhiTranslate="bettingApp.chatInfo.sentDate">Sent Date</span></th>
-            <th><span jhiTranslate="bettingApp.chatInfo.isDeleted">Is Deleted</span></th>
+            <!--<th><span jhiTranslate="bettingApp.chatInfo.isDeleted">Is Deleted</span></th>-->
             <th></th>
             </tr>
             </thead>
             <tbody>
             <tr *ngFor="let chatInfo of chatInfos ;trackBy: trackId">
-                <td><a [routerLink]="['/chat-info', chatInfo.id, 'view' ]">{{chatInfo.id}}</a></td>
+                <!--<td><a [routerLink]="['/chat-info', chatInfo.id, 'view' ]">{{chatInfo.id}}</a></td>-->
                 <td>{{chatInfo.message}}</td>
-                <td>
-                    <a *ngIf="chatInfo.photo" (click)="openFile(chatInfo.photoContentType, chatInfo.photo)">
-                        <img [src]="'data:' + chatInfo.photoContentType + ';base64,' + chatInfo.photo" style="max-height: 30px;" alt="chatInfo image"/>
-                    </a>
-                    <span *ngIf="chatInfo.photo">{{chatInfo.photoContentType}}, {{byteSize(chatInfo.photo)}}</span>
-                </td>
-                <td>{{chatInfo.acceptByAdmin}}</td>
+                <!--<td>-->
+                    <!--<a *ngIf="chatInfo.photo" (click)="openFile(chatInfo.photoContentType, chatInfo.photo)">-->
+                        <!--<img [src]="'data:' + chatInfo.photoContentType + ';base64,' + chatInfo.photo" style="max-height: 30px;" alt="chatInfo image"/>-->
+                    <!--</a>-->
+                    <!--<span *ngIf="chatInfo.photo">{{chatInfo.photoContentType}}, {{byteSize(chatInfo.photo)}}</span>-->
+                <!--</td>-->
+                <!--<td>{{chatInfo.acceptByAdmin}}</td>-->
                 <td>{{chatInfo.fromUser}}</td>
-                <td>{{chatInfo.toUser}}</td>
+                <!--<td>{{chatInfo.toUser}}</td>-->
                 <td>{{chatInfo.sentDate | date:'mediumDate'}}</td>
-                <td>{{chatInfo.isDeleted}}</td>
+                <!--<td>{{chatInfo.isDeleted}}</td>-->
                 <td class="text-right">
                     <div class="btn-group">
                         <button type="submit"

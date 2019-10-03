@@ -9,35 +9,35 @@
                 <dd>
                     <span>{{chatInfo.message}}</span>
                 </dd>
-                <dt><span jhiTranslate="bettingApp.chatInfo.photo">Photo</span></dt>
-                <dd>
-                    <div *ngIf="chatInfo.photo">
-                        <a (click)="openFile(chatInfo.photoContentType, chatInfo.photo)">
-                            <img [src]="'data:' + chatInfo.photoContentType + ';base64,' + chatInfo.photo" style="max-width: 100%;" alt="chatInfo image"/>
-                        </a>
-                        {{chatInfo.photoContentType}}, {{byteSize(chatInfo.photo)}}
-                    </div>
-                </dd>
-                <dt><span jhiTranslate="bettingApp.chatInfo.acceptByAdmin">Accept By Admin</span></dt>
-                <dd>
-                    <span>{{chatInfo.acceptByAdmin}}</span>
-                </dd>
+                <!--<dt><span jhiTranslate="bettingApp.chatInfo.photo">Photo</span></dt>-->
+                <!--<dd>-->
+                    <!--<div *ngIf="chatInfo.photo">-->
+                        <!--<a (click)="openFile(chatInfo.photoContentType, chatInfo.photo)">-->
+                            <!--<img [src]="'data:' + chatInfo.photoContentType + ';base64,' + chatInfo.photo" style="max-width: 100%;" alt="chatInfo image"/>-->
+                        <!--</a>-->
+                        <!--{{chatInfo.photoContentType}}, {{byteSize(chatInfo.photo)}}-->
+                    <!--</div>-->
+                <!--</dd>-->
+                <!--<dt><span jhiTranslate="bettingApp.chatInfo.acceptByAdmin">Accept By Admin</span></dt>-->
+                <!--<dd>-->
+                    <!--<span>{{chatInfo.acceptByAdmin}}</span>-->
+                <!--</dd>-->
                 <dt><span jhiTranslate="bettingApp.chatInfo.fromUser">From User</span></dt>
                 <dd>
                     <span>{{chatInfo.fromUser}}</span>
                 </dd>
-                <dt><span jhiTranslate="bettingApp.chatInfo.toUser">To User</span></dt>
-                <dd>
-                    <span>{{chatInfo.toUser}}</span>
-                </dd>
+                <!--<dt><span jhiTranslate="bettingApp.chatInfo.toUser">To User</span></dt>-->
+                <!--<dd>-->
+                    <!--<span>{{chatInfo.toUser}}</span>-->
+                <!--</dd>-->
                 <dt><span jhiTranslate="bettingApp.chatInfo.sentDate">Sent Date</span></dt>
                 <dd>
                     <span>{{chatInfo.sentDate}}</span>
                 </dd>
-                <dt><span jhiTranslate="bettingApp.chatInfo.isDeleted">Is Deleted</span></dt>
-                <dd>
-                    <span>{{chatInfo.isDeleted}}</span>
-                </dd>
+                <!--<dt><span jhiTranslate="bettingApp.chatInfo.isDeleted">Is Deleted</span></dt>-->
+                <!--<dd>-->
+                    <!--<span>{{chatInfo.isDeleted}}</span>-->
+                <!--</dd>-->
             </dl>
 
             <button type="submit"
