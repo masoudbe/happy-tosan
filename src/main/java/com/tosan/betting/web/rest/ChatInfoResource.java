@@ -2,6 +2,7 @@ package com.tosan.betting.web.rest;
 
 import com.tosan.betting.domain.ChatInfo;
 import com.tosan.betting.repository.ChatInfoRepository;
+import com.tosan.betting.security.SecurityUtils;
 import com.tosan.betting.web.rest.errors.BadRequestAlertException;
 
 import io.github.jhipster.web.util.HeaderUtil;
@@ -51,6 +52,7 @@ public class ChatInfoResource {
         if (chatInfo.getId() != null) {
             throw new BadRequestAlertException("A new chatInfo cannot already have an ID", ENTITY_NAME, "idexists");
         }
+        chatInfo.setFromUser(SecurityUtils.getCurrentUserLogin().get());
         ChatInfo result = chatInfoRepository.save(chatInfo);
         return ResponseEntity.created(new URI("/api/chat-infos/" + result.getId()))
             .headers(HeaderUtil.createEntityCreationAlert(applicationName, true, ENTITY_NAME, result.getId().toString()))
@@ -71,6 +73,9 @@ public class ChatInfoResource {
         log.debug("REST request to update ChatInfo : {}", chatInfo);
         if (chatInfo.getId() == null) {
             throw new BadRequestAlertException("Invalid id", ENTITY_NAME, "idnull");
+        }
+        if(!SecurityUtils.getCurrentUserLogin().get().equals("admin") && SecurityUtils.getCurrentUserLogin().get() != chatInfo.getFromUser()){
+            throw new BadRequestAlertException("You do not have access to modify this message", ENTITY_NAME, "donothavepermission");
         }
         ChatInfo result = chatInfoRepository.save(chatInfo);
         return ResponseEntity.ok()
@@ -111,7 +116,16 @@ public class ChatInfoResource {
     @DeleteMapping("/chat-infos/{id}")
     public ResponseEntity<Void> deleteChatInfo(@PathVariable Long id) {
         log.debug("REST request to delete ChatInfo : {}", id);
-        chatInfoRepository.deleteById(id);
-        return ResponseEntity.noContent().headers(HeaderUtil.createEntityDeletionAlert(applicationName, true, ENTITY_NAME, id.toString())).build();
+
+        ChatInfo chatInfo = chatInfoRepository.findById(id).get();
+        if(chatInfo != null){
+            if(!SecurityUtils.getCurrentUserLogin().get().equals("admin") && SecurityUtils.getCurrentUserLogin().get() != chatInfo.getFromUser()){
+                throw new BadRequestAlertException("You do not have access to modify this message", ENTITY_NAME, "donothavepermission");
+            }
+            chatInfoRepository.deleteById(id);
+            return ResponseEntity.noContent().headers(HeaderUtil.createEntityDeletionAlert(applicationName, true, ENTITY_NAME, id.toString())).build();
+        }
+
+        return null;
     }
 }

@@ -131,7 +131,8 @@
     "userexists": "اسم الدخول سبق استخدامه!",
     "emailexists": "البريد الالكتروني قيد الاستخدام بالفعل!",
     "idexists": "{{ entityName }} جديد لا يمكن أن يكون له معرف بالفعل",
-    "idnull": "Invalid ID"
+    "idnull": "Invalid ID",
+    "donothavepermission": "You do not have access to modify this message"
   },
   "footer": "هنا يضع الفووتر"
 }

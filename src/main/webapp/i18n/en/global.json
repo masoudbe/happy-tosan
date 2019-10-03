@@ -132,7 +132,8 @@
     "userexists": "Login name already used!",
     "emailexists": "Email is already in use!",
     "idexists": "A new {{ entityName }} cannot already have an ID",
-    "idnull": "Invalid ID"
+    "idnull": "Invalid ID",
+    "donothavepermission": "You do not have access to modify this message"
   },
   "footer": "This is your footer"
 }
