@@ -38,7 +38,8 @@ spring:
     type: com.zaxxer.hikari.HikariDataSource
     url: jdbc:mysql://localhost:3306/betting?useUnicode=true&characterEncoding=utf8&useSSL=false&useLegacyDatetimeCode=false&serverTimezone=UTC
     username: root
-    password: 123456
+#    password: rootpass
+    password: dajhkhkABEbk@3465KB*()aa
     hikari:
       poolName: Hikari
       auto-commit: false
