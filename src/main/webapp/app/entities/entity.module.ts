@@ -11,6 +11,10 @@ import { RouterModule } from '@angular/router';
       {
         path: 'game',
         loadChildren: './game/game.module#BettingGameModule'
+      },
+      {
+        path: 'player',
+        loadChildren: './player/player.module#BettingPlayerModule'
       }
       /* jhipster-needle-add-entity-route - JHipster will add entity modules routes here */
     ])

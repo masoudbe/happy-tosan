@@ -9,6 +9,7 @@
         "main": "Entities",
         "chatInfo": "Chat Info",
         "game": "Game",
+        "player": "Player",
         "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)"
       },
       "account": {

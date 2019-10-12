@@ -45,6 +45,7 @@ public class CacheConfiguration {
             createCache(cm, com.tosan.betting.domain.User.class.getName() + ".authorities");
             createCache(cm, com.tosan.betting.domain.ChatInfo.class.getName());
             createCache(cm, com.tosan.betting.domain.Game.class.getName());
+            createCache(cm, com.tosan.betting.domain.Player.class.getName());
             // jhipster-needle-ehcache-add-entry
         };
     }

@@ -1,0 +1,11 @@
+entity Player {
+	firstName String
+    lastName String
+    Code String
+    Img ImageBlob
+}
+
+
+
+
+
