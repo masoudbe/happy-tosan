@@ -11,7 +11,8 @@ import {TrackerMsgService} from "app/core/msgtracker/trackermsg.service";
 
 @Component({
   selector: 'jhi-chat-info',
-  templateUrl: './chat-info.component.html'
+  templateUrl: './chat-info.component.html',
+  styleUrls:['./chat-info.component.scss']
 })
 export class ChatInfoComponent implements OnInit, OnDestroy {
   chatInfos: IChatInfo[];
@@ -78,6 +79,14 @@ export class ChatInfoComponent implements OnInit, OnDestroy {
 
   protected onError(errorMessage: string) {
     this.jhiAlertService.error(errorMessage, null, null);
+  }
+
+  openForm() {
+    document.getElementById("myForm").style.display = "block";
+  }
+
+  closeForm() {
+    document.getElementById("myForm").style.display = "none";
   }
 
 }

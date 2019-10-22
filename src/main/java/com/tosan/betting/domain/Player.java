@@ -29,6 +29,12 @@ public class Player implements Serializable {
     @Column(name = "code")
     private String code;
 
+    @Column(name = "goal_count")
+    private Integer goalCount;
+
+    @Column(name = "ghahremani_count")
+    private Integer ghahremaniCount;
+
     @Lob
     @Column(name = "img")
     private byte[] img;
@@ -82,6 +88,22 @@ public class Player implements Serializable {
 
     public void setCode(String code) {
         this.code = code;
+    }
+
+    public Integer getGoalCount() {
+        return goalCount;
+    }
+
+    public void setGoalCount(Integer goalCount) {
+        this.goalCount = goalCount;
+    }
+
+    public Integer getGhahremaniCount() {
+        return ghahremaniCount;
+    }
+
+    public void setGhahremaniCount(Integer ghahremaniCount) {
+        this.ghahremaniCount = ghahremaniCount;
     }
 
     public byte[] getImg() {

@@ -51,6 +51,8 @@ public class PlayerResource {
         if (player.getId() != null) {
             throw new BadRequestAlertException("A new player cannot already have an ID", ENTITY_NAME, "idexists");
         }
+        player.setGoalCount(10);
+        player.setGhahremaniCount(100);
         Player result = playerRepository.save(player);
         return ResponseEntity.created(new URI("/api/players/" + result.getId()))
             .headers(HeaderUtil.createEntityCreationAlert(applicationName, true, ENTITY_NAME, result.getId().toString()))

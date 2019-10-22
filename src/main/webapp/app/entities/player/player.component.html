@@ -19,6 +19,8 @@
                     <span class="w3-large">{{player.firstName}}</span><br>
                     <span>{{player.lastName}}</span><br>
                     <span>{{player.code}}</span><br>
+                    <span>{{player.goalCount}}</span><br>
+                    <span>{{player.ghahremaniCount}}</span><br>
                     <span>
                         <a *ngIf="player.img" (click)="openFile(player.imgContentType, player.img)">
                             <img [src]="'data:' + player.imgContentType + ';base64,' + player.img" style="max-height: 30px;" alt="player image"/>

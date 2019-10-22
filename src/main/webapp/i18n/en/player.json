@@ -19,6 +19,8 @@
       "firstName": "First Name",
       "lastName": "Last Name",
       "code": "Code",
+	  "goalCount": "Ghoal Count",
+      "ghahremaniCount": "Ghahremani Count",
       "img": "Img"
     }
   }
