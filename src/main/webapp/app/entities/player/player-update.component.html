@@ -25,6 +25,16 @@
                            formControlName="code"/>
                 </div>
                 <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="bettingApp.player.goalCount" for="field_goalCount">Goal Count</label>
+                    <input type="text" class="form-control" name="goalCount" id="field_goalCount"
+                           formControlName="goalCount"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="bettingApp.player.ghahremaniCount" for="field_ghahremaniCount">Ghahremani Count</label>
+                    <input type="text" class="form-control" name="ghahremaniCount" id="field_ghahremaniCount"
+                           formControlName="ghahremaniCount"/>
+                </div>
+                <div class="form-group">
                     <label class="form-control-label" jhiTranslate="bettingApp.player.img" for="field_img">Img</label>
                     <div>
                         <img [src]="'data:' + editForm.get('imgContentType').value + ';base64,' + editForm.get('img').value" style="max-height: 100px;" *ngIf="editForm.get('img').value" alt="player image"/>

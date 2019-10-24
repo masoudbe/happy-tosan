@@ -19,6 +19,8 @@ export class PlayerUpdateComponent implements OnInit {
     firstName: [],
     lastName: [],
     code: [],
+    goalCount: [],
+    ghahremaniCount: [],
     img: [],
     imgContentType: []
   });
@@ -45,6 +47,8 @@ export class PlayerUpdateComponent implements OnInit {
       firstName: player.firstName,
       lastName: player.lastName,
       code: player.code,
+      goalCount: player.goalCount,
+      ghahremaniCount: player.ghahremaniCount,
       img: player.img,
       imgContentType: player.imgContentType
     });
@@ -113,6 +117,8 @@ export class PlayerUpdateComponent implements OnInit {
       firstName: this.editForm.get(['firstName']).value,
       lastName: this.editForm.get(['lastName']).value,
       code: this.editForm.get(['code']).value,
+      goalCount: this.editForm.get(['goalCount']).value,
+      ghahremaniCount: this.editForm.get(['ghahremaniCount']).value,
       imgContentType: this.editForm.get(['imgContentType']).value,
       img: this.editForm.get(['img']).value
     };
