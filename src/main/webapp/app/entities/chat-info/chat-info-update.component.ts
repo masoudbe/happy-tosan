@@ -7,7 +7,7 @@ import * as moment from 'moment';
 import { JhiAlertService, JhiDataUtils } from 'ng-jhipster';
 import { IChatInfo, ChatInfo } from 'app/shared/model/chat-info.model';
 import { ChatInfoService } from './chat-info.service';
-import {TrackerMsgService} from "app/core/msgtracker/trackermsg.service";
+import {TrackerMsgService} from 'app/core/msgtracker/trackermsg.service';
 
 @Component({
   selector: 'jhi-chat-info-update',

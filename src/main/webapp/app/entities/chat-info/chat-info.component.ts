@@ -7,12 +7,12 @@ import {JhiEventManager, JhiAlertService, JhiDataUtils} from 'ng-jhipster';
 import {IChatInfo} from 'app/shared/model/chat-info.model';
 import {AccountService} from 'app/core';
 import {ChatInfoService} from './chat-info.service';
-import {TrackerMsgService} from "app/core/msgtracker/trackermsg.service";
+import {TrackerMsgService} from 'app/core/msgtracker/trackermsg.service';
 
 @Component({
   selector: 'jhi-chat-info',
   templateUrl: './chat-info.component.html',
-  styleUrls:['./chat-info.component.scss']
+  styleUrls: ['./chat-info.component.scss']
 })
 export class ChatInfoComponent implements OnInit, OnDestroy {
   chatInfos: IChatInfo[];
@@ -82,11 +82,11 @@ export class ChatInfoComponent implements OnInit, OnDestroy {
   }
 
   openForm() {
-    document.getElementById("myForm").style.display = "block";
+    document.getElementById("myForm").style.display = 'block';
   }
 
   closeForm() {
-    document.getElementById("myForm").style.display = "none";
+    document.getElementById("myForm").style.display = 'none';
   }
 
 }
