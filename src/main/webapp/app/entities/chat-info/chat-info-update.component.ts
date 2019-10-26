@@ -151,7 +151,7 @@ export class ChatInfoUpdateComponent implements OnInit {
     this.jhiAlertService.error(errorMessage, null, null);
   }
 
-  sendMessage(){
+  sendMessage() {
     this.msgService.sendActivity();
   }
 }

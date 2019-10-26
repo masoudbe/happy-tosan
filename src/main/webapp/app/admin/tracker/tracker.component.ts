@@ -1,7 +1,7 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 
 import { JhiTrackerService } from 'app/core';
-import {MsgtrackerComponent} from "app/msgtracker/msgtracker.component";
+import {MsgtrackerComponent} from 'app/msgtracker/msgtracker.component';
 import {TrackerMsgService} from "app/core/msgtracker/trackermsg.service";
 
 @Component({

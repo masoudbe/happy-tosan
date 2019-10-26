@@ -7,7 +7,7 @@ import { Observable, Subject } from 'rxjs';
 import { SERVER_API_URL } from 'app/app.constants';
 import { Account } from 'app/core/user/account.model';
 import { JhiTrackerService } from '../tracker/tracker.service';
-import {TrackerMsgService} from "app/core/msgtracker/trackermsg.service";
+import {TrackerMsgService} from 'app/core/msgtracker/trackermsg.service';
 
 @Injectable({ providedIn: 'root' })
 export class AccountService {
