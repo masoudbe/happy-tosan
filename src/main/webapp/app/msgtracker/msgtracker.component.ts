@@ -1,5 +1,5 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
-import {TrackerMsgService} from "app/core/msgtracker/trackermsg.service";
+import {TrackerMsgService} from 'app/core/msgtracker/trackermsg.service';
 
 @Component({
   selector: 'jhi-msgtracker',
@@ -35,7 +35,7 @@ export class MsgtrackerComponent implements OnInit, OnDestroy {
     this.msgService.unsubscribe();
   }
 
-  sendMessage(){
+  sendMessage() {
     this.msgService.sendActivity();
   }
 

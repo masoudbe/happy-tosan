@@ -82,11 +82,11 @@ export class ChatInfoComponent implements OnInit, OnDestroy {
   }
 
   openForm() {
-    document.getElementById("myForm").style.display = 'block';
+    document.getElementById('myForm').style.display = 'block';
   }
 
   closeForm() {
-    document.getElementById("myForm").style.display = 'none';
+    document.getElementById('myForm').style.display = 'none';
   }
 
 }
