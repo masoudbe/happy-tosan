@@ -10,6 +10,7 @@
         "chatInfo": "Chat Info",
         "game": "Game",
         "player": "Player",
+        "userLevel": "User Level",
         "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)"
       },
       "account": {

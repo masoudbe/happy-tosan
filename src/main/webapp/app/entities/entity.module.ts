@@ -15,6 +15,10 @@ import { RouterModule } from '@angular/router';
       {
         path: 'player',
         loadChildren: './player/player.module#BettingPlayerModule'
+      },
+      {
+        path: 'user-level',
+        loadChildren: './user-level/user-level.module#BettingUserLevelModule'
       }
       /* jhipster-needle-add-entity-route - JHipster will add entity modules routes here */
     ])

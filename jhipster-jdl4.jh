@@ -1,0 +1,8 @@
+ entity UserLevel {
+    level Integer
+ }
+
+ relationship OneToOne {
+    UserLevel{mainUser} to User,
+	UserLevel{user} to User
+}

@@ -1,0 +1,24 @@
+{
+  "bettingApp": {
+    "userLevel": {
+      "home": {
+        "title": "User Levels",
+        "createLabel": "Create a new User Level",
+        "createOrEditLabel": "Create or edit a User Level",
+        "notFound": "No User Level found"
+      },
+      "created": "A new User Level is created with identifier {{ param }}",
+      "updated": "A User Level is updated with identifier {{ param }}",
+      "deleted": "A User Level is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete User Level {{ id }}?"
+      },
+      "detail": {
+        "title": "User Level"
+      },
+      "level": "Level",
+      "mainUser": "Main User",
+      "user": "User"
+    }
+  }
+}

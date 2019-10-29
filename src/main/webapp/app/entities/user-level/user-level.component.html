@@ -1,0 +1,65 @@
+<div>
+    <h2 id="page-heading">
+        <span jhiTranslate="bettingApp.userLevel.home.title">User Levels</span>
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-user-level" [routerLink]="['/user-level/new']">
+            <fa-icon [icon]="'plus'"></fa-icon>
+            <span  jhiTranslate="bettingApp.userLevel.home.createLabel">
+            Create new User Level
+            </span>
+        </button>
+    </h2>
+    <jhi-alert></jhi-alert>
+    <br/>
+    <div class="alert alert-warning" *ngIf="userLevels?.length === 0">
+        <span jhiTranslate="bettingApp.userLevel.home.notFound">No userLevels found</span>
+    </div>
+    <div class="table-responsive" *ngIf="userLevels?.length > 0">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+            <th><span jhiTranslate="global.field.id">ID</span></th>
+            <th><span jhiTranslate="bettingApp.userLevel.level">Level</span></th>
+            <th><span jhiTranslate="bettingApp.userLevel.mainUser">Main User</span></th>
+            <th><span jhiTranslate="bettingApp.userLevel.user">User</span></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let userLevel of userLevels ;trackBy: trackId">
+                <td><a [routerLink]="['/user-level', userLevel.id, 'view' ]">{{userLevel.id}}</a></td>
+                <td>{{userLevel.level}}</td>
+                <td>
+                    {{userLevel.mainUser?.id}}
+                </td>
+                <td>
+                    {{userLevel.user?.id}}
+                </td>
+                <td class="text-right">
+                    <div class="btn-group">
+                        <button type="submit"
+                                [routerLink]="['/user-level', userLevel.id, 'view' ]"
+                                class="btn btn-info btn-sm">
+                            <fa-icon [icon]="'eye'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/user-level', userLevel.id, 'edit']"
+                                class="btn btn-primary btn-sm">
+                            <fa-icon [icon]="'pencil-alt'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', 'user-level', { outlets: { popup: userLevel.id + '/delete'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-danger btn-sm">
+                            <fa-icon [icon]="'times'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
