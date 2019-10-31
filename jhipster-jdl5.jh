@@ -1,0 +1,15 @@
+ entity ProductType {
+    code String
+    enName String
+    faName String
+ }
+
+  entity Brand {
+     code String
+     enName String
+     faName String
+  }
+
+  relationship ManyToOne {
+     ProductType{parentType} to ProductType
+ }

@@ -1,0 +1,35 @@
+{
+    "name": "ProductType",
+    "fields": [
+        {
+            "fieldName": "code",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "enName",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "faName",
+            "fieldType": "String"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "productType",
+            "otherEntityRelationshipName": "productType",
+            "relationshipName": "parentType",
+            "otherEntityField": "id"
+        }
+    ],
+    "changelogDate": "20191031211149",
+    "entityTableName": "product_type",
+    "dto": "no",
+    "pagination": "no",
+    "service": "no",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*"
+}

@@ -1,0 +1,41 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="productType">
+            <h2><span jhiTranslate="bettingApp.productType.detail.title">Product Type</span> {{productType.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="bettingApp.productType.code">Code</span></dt>
+                <dd>
+                    <span>{{productType.code}}</span>
+                </dd>
+                <dt><span jhiTranslate="bettingApp.productType.enName">En Name</span></dt>
+                <dd>
+                    <span>{{productType.enName}}</span>
+                </dd>
+                <dt><span jhiTranslate="bettingApp.productType.faName">Fa Name</span></dt>
+                <dd>
+                    <span>{{productType.faName}}</span>
+                </dd>
+                <dt><span jhiTranslate="bettingApp.productType.parentType">Parent Type</span></dt>
+                <dd>
+                    <div *ngIf="productType.parentType">
+                        <a [routerLink]="['/product-type', productType.parentType?.id, 'view']">{{productType.parentType?.id}}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/product-type', productType.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>
