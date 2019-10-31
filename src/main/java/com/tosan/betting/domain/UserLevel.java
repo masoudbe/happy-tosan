@@ -1,4 +1,5 @@
 package com.tosan.betting.domain;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 
@@ -23,12 +24,12 @@ public class UserLevel implements Serializable {
     @Column(name = "level")
     private Integer level;
 
-    @OneToOne
-    @JoinColumn(unique = true)
+    @ManyToOne
+    @JsonIgnoreProperties("userLevels")
     private User mainUser;
 
-    @OneToOne
-    @JoinColumn(unique = true)
+    @ManyToOne
+    @JsonIgnoreProperties("userLevels")
     private User user;
 
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove

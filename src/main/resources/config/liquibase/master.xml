@@ -18,7 +18,9 @@
     <include file="config/liquibase/changelog/20190919091336_added_entity_Game.xml" relativeToChangelogFile="false"/>
     <include file="config/liquibase/changelog/20191011171152_added_entity_Player.xml" relativeToChangelogFile="false"/>
     <include file="config/liquibase/changelog/20191029200758_added_entity_UserLevel.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20191031203238_added_entity_UserLevel.xml" relativeToChangelogFile="false"/>
     <!-- jhipster-needle-liquibase-add-changelog - JHipster will add liquibase changelogs here -->
     <include file="config/liquibase/changelog/20191029200758_added_entity_constraints_UserLevel.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20191031203238_added_entity_constraints_UserLevel.xml" relativeToChangelogFile="false"/>
     <!-- jhipster-needle-liquibase-add-constraints-changelog - JHipster will add liquibase constraints changelogs here -->
 </databaseChangeLog>

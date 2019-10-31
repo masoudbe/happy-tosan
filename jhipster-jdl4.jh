@@ -2,7 +2,7 @@
     level Integer
  }
 
- relationship OneToOne {
+ relationship ManyToOne {
     UserLevel{mainUser} to User,
 	UserLevel{user} to User
 }
