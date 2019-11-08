@@ -27,6 +27,10 @@ import { RouterModule } from '@angular/router';
       {
         path: 'brand',
         loadChildren: './brand/brand.module#BettingBrandModule'
+      },
+      {
+        path: 'suggestion',
+        loadChildren: './suggestion/suggestion.module#BettingSuggestionModule'
       }
       /* jhipster-needle-add-entity-route - JHipster will add entity modules routes here */
     ])

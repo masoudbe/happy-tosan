@@ -1,0 +1,32 @@
+ entity ProductType {
+    code String
+    enName String
+    faName String
+ }
+
+  entity Brand {
+     code String
+     enName String
+     faName String
+  }
+
+ entity Suggestion {
+    faName String
+    enName String
+    startDate LocalDate
+    endDate LocalDate
+    img1 ImageBlob
+    img2 ImageBlob
+    img3 ImageBlob
+    img4 ImageBlob
+    price Double
+    active Boolean
+    score Integer
+ }
+
+  relationship ManyToOne {
+     ProductType{parentType} to ProductType,
+     Suggestion{type} to ProductType,
+     Suggestion{brand} to Brand,
+     Suggestion{user} to User
+ }

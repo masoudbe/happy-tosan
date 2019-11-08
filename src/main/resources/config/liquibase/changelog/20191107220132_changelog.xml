@@ -1,0 +1,207 @@
+<?xml version="1.1" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.6.xsd">
+    <changeSet author="lenovo (generated)" id="1573164102587-1">
+        <createTable tableName="brand">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints primaryKey="true" primaryKeyName="brandPK"/>
+            </column>
+            <column name="code" type="VARCHAR(255)"/>
+            <column name="en_name" type="VARCHAR(255)"/>
+            <column name="fa_name" type="VARCHAR(255)"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="lenovo (generated)" id="1573164102587-2">
+        <createTable tableName="chat_info">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints primaryKey="true" primaryKeyName="chat_infoPK"/>
+            </column>
+            <column name="accept_by_admin" type="BIT"/>
+            <column name="from_user" type="VARCHAR(255)"/>
+            <column name="is_deleted" type="BIT"/>
+            <column name="message" type="VARCHAR(255)"/>
+            <column name="photo" type="LONGBLOB"/>
+            <column name="photo_content_type" type="VARCHAR(255)"/>
+            <column name="sent_date" type="date"/>
+            <column name="to_user" type="VARCHAR(255)"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="lenovo (generated)" id="1573164102587-3">
+        <createTable tableName="game">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints primaryKey="true" primaryKeyName="gamePK"/>
+            </column>
+            <column name="date" type="date"/>
+            <column name="group_name" type="VARCHAR(255)"/>
+            <column name="league_number" type="INT"/>
+            <column name="team_1_goal" type="INT"/>
+            <column name="team_1_name" type="VARCHAR(255)"/>
+            <column name="team_2_goal" type="INT"/>
+            <column name="team_2_name" type="VARCHAR(255)"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="lenovo (generated)" id="1573164102587-9">
+        <createTable tableName="player">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints primaryKey="true" primaryKeyName="playerPK"/>
+            </column>
+            <column name="code" type="VARCHAR(255)"/>
+            <column name="first_name" type="VARCHAR(255)"/>
+            <column name="ghahremani_count" type="INT"/>
+            <column name="goal_count" type="INT"/>
+            <column name="img" type="LONGBLOB"/>
+            <column name="img_content_type" type="VARCHAR(255)"/>
+            <column name="last_name" type="VARCHAR(255)"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="lenovo (generated)" id="1573164102587-10">
+        <createTable tableName="product_type">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints primaryKey="true" primaryKeyName="product_typePK"/>
+            </column>
+            <column name="code" type="VARCHAR(255)"/>
+            <column name="en_name" type="VARCHAR(255)"/>
+            <column name="fa_name" type="VARCHAR(255)"/>
+            <column name="parent_type_id" type="BIGINT"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="lenovo (generated)" id="1573164102587-11">
+        <createTable tableName="suggestion">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints primaryKey="true" primaryKeyName="suggestionPK"/>
+            </column>
+            <column name="active" type="BIT"/>
+            <column name="en_name" type="VARCHAR(255)"/>
+            <column name="end_date" type="date"/>
+            <column name="fa_name" type="VARCHAR(255)"/>
+            <column name="img_1" type="LONGBLOB"/>
+            <column name="img_1_content_type" type="VARCHAR(255)"/>
+            <column name="img_2" type="LONGBLOB"/>
+            <column name="img_2_content_type" type="VARCHAR(255)"/>
+            <column name="img_3" type="LONGBLOB"/>
+            <column name="img_3_content_type" type="VARCHAR(255)"/>
+            <column name="img_4" type="LONGBLOB"/>
+            <column name="img_4_content_type" type="VARCHAR(255)"/>
+            <column name="price" type="DOUBLE"/>
+            <column name="score" type="INT"/>
+            <column name="start_date" type="date"/>
+            <column name="brand_id" type="BIGINT"/>
+            <column name="type_id" type="BIGINT"/>
+            <column name="user_id" type="BIGINT"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="lenovo (generated)" id="1573164102587-12">
+        <createTable tableName="user_level">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints primaryKey="true" primaryKeyName="user_levelPK"/>
+            </column>
+            <column name="level" type="INT"/>
+            <column name="main_user_id" type="BIGINT"/>
+            <column name="user_id" type="BIGINT"/>
+        </createTable>
+    </changeSet>
+
+    <changeSet author="lenovo (generated)" id="1573164102587-4">
+        <createTable tableName="jhi_authority">
+            <column name="name" type="VARCHAR(50)">
+                <constraints primaryKey="true" primaryKeyName="jhi_authorityPK"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="lenovo (generated)" id="1573164102587-5">
+        <createTable tableName="jhi_persistent_audit_event">
+            <column autoIncrement="true" name="event_id" type="BIGINT">
+                <constraints primaryKey="true" primaryKeyName="jhi_persistent_audit_eventPK"/>
+            </column>
+            <column name="event_date" type="datetime"/>
+            <column name="event_type" type="VARCHAR(255)"/>
+            <column name="principal" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="lenovo (generated)" id="1573164102587-6">
+        <createTable tableName="jhi_persistent_audit_evt_data">
+            <column name="event_id" type="BIGINT">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="value" type="VARCHAR(255)"/>
+            <column name="name" type="VARCHAR(255)">
+                <constraints primaryKey="true"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="lenovo (generated)" id="1573164102587-7">
+        <createTable tableName="jhi_user">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints primaryKey="true" primaryKeyName="jhi_userPK"/>
+            </column>
+            <column name="created_by" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="created_date" type="datetime"/>
+            <column name="last_modified_by" type="VARCHAR(50)"/>
+            <column name="last_modified_date" type="datetime"/>
+            <column name="activated" type="BIT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="activation_key" type="VARCHAR(20)"/>
+            <column name="email" type="VARCHAR(254)"/>
+            <column name="first_name" type="VARCHAR(50)"/>
+            <column name="image_url" type="VARCHAR(256)"/>
+            <column name="lang_key" type="VARCHAR(10)"/>
+            <column name="last_name" type="VARCHAR(50)"/>
+            <column name="login" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="password_hash" type="VARCHAR(60)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="reset_date" type="datetime"/>
+            <column name="reset_key" type="VARCHAR(20)"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="lenovo (generated)" id="1573164102587-8">
+        <createTable tableName="jhi_user_authority">
+            <column name="user_id" type="BIGINT">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="authority_name" type="VARCHAR(50)">
+                <constraints primaryKey="true"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+    <changeSet author="lenovo (generated)" id="1573164102587-13">
+        <addUniqueConstraint columnNames="email" constraintName="UC_JHI_USEREMAIL_COL" tableName="jhi_user"/>
+    </changeSet>
+    <changeSet author="lenovo (generated)" id="1573164102587-14">
+        <addUniqueConstraint columnNames="login" constraintName="UC_JHI_USERLOGIN_COL" tableName="jhi_user"/>
+    </changeSet>
+    <changeSet author="lenovo (generated)" id="1573164102587-15">
+        <addForeignKeyConstraint baseColumnNames="user_id" baseTableName="jhi_user_authority" constraintName="FK290okww5jujghp4el5i7mgwu0" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="jhi_user" validate="true"/>
+    </changeSet>
+    <changeSet author="lenovo (generated)" id="1573164102587-16">
+        <addForeignKeyConstraint baseColumnNames="event_id" baseTableName="jhi_persistent_audit_evt_data" constraintName="FK2ehnyx2si4tjd2nt4q7y40v8m" deferrable="false" initiallyDeferred="false" referencedColumnNames="event_id" referencedTableName="jhi_persistent_audit_event" validate="true"/>
+    </changeSet>
+    <changeSet author="lenovo (generated)" id="1573164102587-17">
+        <addForeignKeyConstraint baseColumnNames="user_id" baseTableName="suggestion" constraintName="FK4b121xpsu95emc1ajw3q33ofp" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="jhi_user" validate="true"/>
+    </changeSet>
+    <changeSet author="lenovo (generated)" id="1573164102587-18">
+        <addForeignKeyConstraint baseColumnNames="authority_name" baseTableName="jhi_user_authority" constraintName="FK4psxl0jtx6nr7rhqbynr6itoc" deferrable="false" initiallyDeferred="false" referencedColumnNames="name" referencedTableName="jhi_authority" validate="true"/>
+    </changeSet>
+    <changeSet author="lenovo (generated)" id="1573164102587-19">
+        <addForeignKeyConstraint baseColumnNames="brand_id" baseTableName="suggestion" constraintName="FKacw8kdcif0o2950bmmwo18mrv" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="brand" validate="true"/>
+    </changeSet>
+    <changeSet author="lenovo (generated)" id="1573164102587-20">
+        <addForeignKeyConstraint baseColumnNames="parent_type_id" baseTableName="product_type" constraintName="FKh4v7bewqph3drlx7rrummhi38" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="product_type" validate="true"/>
+    </changeSet>
+    <changeSet author="lenovo (generated)" id="1573164102587-21">
+        <addForeignKeyConstraint baseColumnNames="main_user_id" baseTableName="user_level" constraintName="FKkcotqt0g443h637j9oy6bf9da" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="jhi_user" validate="true"/>
+    </changeSet>
+    <changeSet author="lenovo (generated)" id="1573164102587-22">
+        <addForeignKeyConstraint baseColumnNames="type_id" baseTableName="suggestion" constraintName="FKn7x9025yt62dofpei5qdstdxj" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="product_type" validate="true"/>
+    </changeSet>
+    <changeSet author="lenovo (generated)" id="1573164102587-23">
+        <addForeignKeyConstraint baseColumnNames="user_id" baseTableName="user_level" constraintName="FKtgerog9ra5c25sdvhsfcgxrk" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="jhi_user" validate="true"/>
+    </changeSet>
+</databaseChangeLog>

@@ -14,16 +14,22 @@
     <property name="uuidType" value="varchar(36)" dbms="h2, mysql, mariadb"/>
 
     <include file="config/liquibase/changelog/00000000000000_initial_schema.xml" relativeToChangelogFile="false"/>
-    <include file="config/liquibase/changelog/20190916203721_added_entity_ChatInfo.xml" relativeToChangelogFile="false"/>
-    <include file="config/liquibase/changelog/20190919091336_added_entity_Game.xml" relativeToChangelogFile="false"/>
-    <include file="config/liquibase/changelog/20191011171152_added_entity_Player.xml" relativeToChangelogFile="false"/>
-    <include file="config/liquibase/changelog/20191029200758_added_entity_UserLevel.xml" relativeToChangelogFile="false"/>
-    <include file="config/liquibase/changelog/20191031203238_added_entity_UserLevel.xml" relativeToChangelogFile="false"/>
-    <include file="config/liquibase/changelog/20191031211149_added_entity_ProductType.xml" relativeToChangelogFile="false"/>
-    <include file="config/liquibase/changelog/20191031211150_added_entity_Brand.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20191107220132_changelog.xml" relativeToChangelogFile="false"/>
+    <!--<include file="config/liquibase/changelog/20190916203721_added_entity_ChatInfo.xml" relativeToChangelogFile="false"/>-->
+    <!--<include file="config/liquibase/changelog/20190919091336_added_entity_Game.xml" relativeToChangelogFile="false"/>-->
+    <!--<include file="config/liquibase/changelog/20191011171152_added_entity_Player.xml" relativeToChangelogFile="false"/>-->
+    <!--<include file="config/liquibase/changelog/20191029200758_added_entity_UserLevel.xml" relativeToChangelogFile="false"/>-->
+    <!--<include file="config/liquibase/changelog/20191031203238_added_entity_UserLevel.xml" relativeToChangelogFile="false"/>-->
+    <!--<include file="config/liquibase/changelog/20191031211149_added_entity_ProductType.xml" relativeToChangelogFile="false"/>-->
+    <!--<include file="config/liquibase/changelog/20191031211150_added_entity_Brand.xml" relativeToChangelogFile="false"/>-->
+    <!--<include file="config/liquibase/changelog/20191107192633_added_entity_ProductType.xml" relativeToChangelogFile="false"/>-->
+    <!--<include file="config/liquibase/changelog/20191107192634_added_entity_Brand.xml" relativeToChangelogFile="false"/>-->
+    <!--<include file="config/liquibase/changelog/20191107192635_added_entity_Suggestion.xml" relativeToChangelogFile="false"/>-->
     <!-- jhipster-needle-liquibase-add-changelog - JHipster will add liquibase changelogs here -->
-    <include file="config/liquibase/changelog/20191029200758_added_entity_constraints_UserLevel.xml" relativeToChangelogFile="false"/>
-    <include file="config/liquibase/changelog/20191031203238_added_entity_constraints_UserLevel.xml" relativeToChangelogFile="false"/>
-    <include file="config/liquibase/changelog/20191031211149_added_entity_constraints_ProductType.xml" relativeToChangelogFile="false"/>
+    <!--<include file="config/liquibase/changelog/20191029200758_added_entity_constraints_UserLevel.xml" relativeToChangelogFile="false"/>-->
+    <!--<include file="config/liquibase/changelog/20191031203238_added_entity_constraints_UserLevel.xml" relativeToChangelogFile="false"/>-->
+    <!--<include file="config/liquibase/changelog/20191031211149_added_entity_constraints_ProductType.xml" relativeToChangelogFile="false"/>-->
+    <!--<include file="config/liquibase/changelog/20191107192633_added_entity_constraints_ProductType.xml" relativeToChangelogFile="false"/>-->
+    <!--<include file="config/liquibase/changelog/20191107192635_added_entity_constraints_Suggestion.xml" relativeToChangelogFile="false"/>-->
     <!-- jhipster-needle-liquibase-add-constraints-changelog - JHipster will add liquibase constraints changelogs here -->
 </databaseChangeLog>

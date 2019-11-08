@@ -1,0 +1,103 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="suggestion">
+            <h2><span jhiTranslate="bettingApp.suggestion.detail.title">Suggestion</span> {{suggestion.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="bettingApp.suggestion.faName">Fa Name</span></dt>
+                <dd>
+                    <span>{{suggestion.faName}}</span>
+                </dd>
+                <dt><span jhiTranslate="bettingApp.suggestion.enName">En Name</span></dt>
+                <dd>
+                    <span>{{suggestion.enName}}</span>
+                </dd>
+                <dt><span jhiTranslate="bettingApp.suggestion.startDate">Start Date</span></dt>
+                <dd>
+                    <span>{{suggestion.startDate}}</span>
+                </dd>
+                <dt><span jhiTranslate="bettingApp.suggestion.endDate">End Date</span></dt>
+                <dd>
+                    <span>{{suggestion.endDate}}</span>
+                </dd>
+                <dt><span jhiTranslate="bettingApp.suggestion.img1">Img 1</span></dt>
+                <dd>
+                    <div *ngIf="suggestion.img1">
+                        <a (click)="openFile(suggestion.img1ContentType, suggestion.img1)">
+                            <img [src]="'data:' + suggestion.img1ContentType + ';base64,' + suggestion.img1" style="max-width: 100%;" alt="suggestion image"/>
+                        </a>
+                        {{suggestion.img1ContentType}}, {{byteSize(suggestion.img1)}}
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="bettingApp.suggestion.img2">Img 2</span></dt>
+                <dd>
+                    <div *ngIf="suggestion.img2">
+                        <a (click)="openFile(suggestion.img2ContentType, suggestion.img2)">
+                            <img [src]="'data:' + suggestion.img2ContentType + ';base64,' + suggestion.img2" style="max-width: 100%;" alt="suggestion image"/>
+                        </a>
+                        {{suggestion.img2ContentType}}, {{byteSize(suggestion.img2)}}
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="bettingApp.suggestion.img3">Img 3</span></dt>
+                <dd>
+                    <div *ngIf="suggestion.img3">
+                        <a (click)="openFile(suggestion.img3ContentType, suggestion.img3)">
+                            <img [src]="'data:' + suggestion.img3ContentType + ';base64,' + suggestion.img3" style="max-width: 100%;" alt="suggestion image"/>
+                        </a>
+                        {{suggestion.img3ContentType}}, {{byteSize(suggestion.img3)}}
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="bettingApp.suggestion.img4">Img 4</span></dt>
+                <dd>
+                    <div *ngIf="suggestion.img4">
+                        <a (click)="openFile(suggestion.img4ContentType, suggestion.img4)">
+                            <img [src]="'data:' + suggestion.img4ContentType + ';base64,' + suggestion.img4" style="max-width: 100%;" alt="suggestion image"/>
+                        </a>
+                        {{suggestion.img4ContentType}}, {{byteSize(suggestion.img4)}}
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="bettingApp.suggestion.price">Price</span></dt>
+                <dd>
+                    <span>{{suggestion.price}}</span>
+                </dd>
+                <dt><span jhiTranslate="bettingApp.suggestion.active">Active</span></dt>
+                <dd>
+                    <span>{{suggestion.active}}</span>
+                </dd>
+                <dt><span jhiTranslate="bettingApp.suggestion.score">Score</span></dt>
+                <dd>
+                    <span>{{suggestion.score}}</span>
+                </dd>
+                <dt><span jhiTranslate="bettingApp.suggestion.type">Type</span></dt>
+                <dd>
+                    <div *ngIf="suggestion.type">
+                        <a [routerLink]="['/product-type', suggestion.type?.id, 'view']">{{suggestion.type?.id}}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="bettingApp.suggestion.brand">Brand</span></dt>
+                <dd>
+                    <div *ngIf="suggestion.brand">
+                        <a [routerLink]="['/brand', suggestion.brand?.id, 'view']">{{suggestion.brand?.id}}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="bettingApp.suggestion.user">User</span></dt>
+                <dd>
+                    {{suggestion.user?.id}}
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/suggestion', suggestion.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

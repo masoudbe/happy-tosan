@@ -1,0 +1,35 @@
+{
+  "bettingApp": {
+    "suggestion": {
+      "home": {
+        "title": "Suggestions",
+        "createLabel": "Create a new Suggestion",
+        "createOrEditLabel": "Create or edit a Suggestion",
+        "notFound": "No Suggestion found"
+      },
+      "created": "A new Suggestion is created with identifier {{ param }}",
+      "updated": "A Suggestion is updated with identifier {{ param }}",
+      "deleted": "A Suggestion is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Suggestion {{ id }}?"
+      },
+      "detail": {
+        "title": "Suggestion"
+      },
+      "faName": "Fa Name",
+      "enName": "En Name",
+      "startDate": "Start Date",
+      "endDate": "End Date",
+      "img1": "Img 1",
+      "img2": "Img 2",
+      "img3": "Img 3",
+      "img4": "Img 4",
+      "price": "Price",
+      "active": "Active",
+      "score": "Score",
+      "type": "Type",
+      "brand": "Brand",
+      "user": "User"
+    }
+  }
+}
