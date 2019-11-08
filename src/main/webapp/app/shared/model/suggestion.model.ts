@@ -20,6 +20,7 @@ export interface ISuggestion {
   price?: number;
   active?: boolean;
   score?: number;
+  comment?: string;
   type?: IProductType;
   brand?: IBrand;
   user?: IUser;
@@ -43,6 +44,7 @@ export class Suggestion implements ISuggestion {
     public price?: number,
     public active?: boolean,
     public score?: number,
+    public comment?: string,
     public type?: IProductType,
     public brand?: IBrand,
     public user?: IUser

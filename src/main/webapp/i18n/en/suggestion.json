@@ -27,6 +27,7 @@
       "price": "Price",
       "active": "Active",
       "score": "Score",
+      "comment": "Comment",
       "type": "Type",
       "brand": "Brand",
       "user": "User"

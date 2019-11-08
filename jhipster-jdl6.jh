@@ -22,6 +22,7 @@
     price Double
     active Boolean
     score Integer
+    comment String
  }
 
   relationship ManyToOne {

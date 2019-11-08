@@ -71,6 +71,9 @@ public class Suggestion implements Serializable {
     @Column(name = "score")
     private Integer score;
 
+    @Column(name = "comment")
+    private String comment;
+
     @ManyToOne
     @JsonIgnoreProperties("suggestions")
     private ProductType type;
@@ -287,6 +290,19 @@ public class Suggestion implements Serializable {
         this.score = score;
     }
 
+    public String getComment() {
+        return comment;
+    }
+
+    public Suggestion comment(String comment) {
+        this.comment = comment;
+        return this;
+    }
+
+    public void setComment(String comment) {
+        this.comment = comment;
+    }
+
     public ProductType getType() {
         return type;
     }
@@ -362,6 +378,7 @@ public class Suggestion implements Serializable {
             ", price=" + getPrice() +
             ", active='" + isActive() + "'" +
             ", score=" + getScore() +
+            ", comment='" + getComment() + "'" +
             "}";
     }
 }
