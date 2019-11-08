@@ -21,6 +21,7 @@ export interface ISuggestion {
   active?: boolean;
   score?: number;
   comment?: string;
+  userLevelNumber?: number;
   type?: IProductType;
   brand?: IBrand;
   user?: IUser;
@@ -45,6 +46,7 @@ export class Suggestion implements ISuggestion {
     public active?: boolean,
     public score?: number,
     public comment?: string,
+    public userLevelNumber?: number,
     public type?: IProductType,
     public brand?: IBrand,
     public user?: IUser

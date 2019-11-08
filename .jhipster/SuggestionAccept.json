@@ -1,0 +1,38 @@
+{
+    "name": "SuggestionAccept",
+    "fields": [
+        {
+            "fieldName": "comment",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "date",
+            "fieldType": "LocalDate"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "user",
+            "otherEntityRelationshipName": "suggestionAccept",
+            "relationshipName": "user",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "suggestion",
+            "otherEntityRelationshipName": "suggestionAccept",
+            "relationshipName": "suggestion",
+            "otherEntityField": "id"
+        }
+    ],
+    "changelogDate": "20191108132135",
+    "entityTableName": "suggestion_accept",
+    "dto": "no",
+    "pagination": "no",
+    "service": "no",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*"
+}

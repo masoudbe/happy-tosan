@@ -1,6 +1,7 @@
 <?xml version="1.1" encoding="UTF-8" standalone="no"?>
 <databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.6.xsd">
-    <changeSet author="lenovo (generated)" id="1573214168370-1">
+
+    <changeSet author="lenovo (generated)" id="1573221466998-1">
         <createTable tableName="brand">
             <column autoIncrement="true" name="id" type="BIGINT">
                 <constraints primaryKey="true" primaryKeyName="brandPK"/>
@@ -10,7 +11,7 @@
             <column name="fa_name" type="VARCHAR(255)"/>
         </createTable>
     </changeSet>
-    <changeSet author="lenovo (generated)" id="1573214168370-2">
+    <changeSet author="lenovo (generated)" id="1573221466998-2">
         <createTable tableName="chat_info">
             <column autoIncrement="true" name="id" type="BIGINT">
                 <constraints primaryKey="true" primaryKeyName="chat_infoPK"/>
@@ -25,7 +26,7 @@
             <column name="to_user" type="VARCHAR(255)"/>
         </createTable>
     </changeSet>
-    <changeSet author="lenovo (generated)" id="1573214168370-3">
+    <changeSet author="lenovo (generated)" id="1573221466998-3">
         <createTable tableName="game">
             <column autoIncrement="true" name="id" type="BIGINT">
                 <constraints primaryKey="true" primaryKeyName="gamePK"/>
@@ -39,7 +40,7 @@
             <column name="team_2_name" type="VARCHAR(255)"/>
         </createTable>
     </changeSet>
-    <changeSet author="lenovo (generated)" id="1573214168370-9">
+    <changeSet author="lenovo (generated)" id="1573221466998-9">
         <createTable tableName="player">
             <column autoIncrement="true" name="id" type="BIGINT">
                 <constraints primaryKey="true" primaryKeyName="playerPK"/>
@@ -53,7 +54,7 @@
             <column name="last_name" type="VARCHAR(255)"/>
         </createTable>
     </changeSet>
-    <changeSet author="lenovo (generated)" id="1573214168370-10">
+    <changeSet author="lenovo (generated)" id="1573221466998-10">
         <createTable tableName="product_type">
             <column autoIncrement="true" name="id" type="BIGINT">
                 <constraints primaryKey="true" primaryKeyName="product_typePK"/>
@@ -64,7 +65,7 @@
             <column name="parent_type_id" type="BIGINT"/>
         </createTable>
     </changeSet>
-    <changeSet author="lenovo (generated)" id="1573214168370-11">
+    <changeSet author="lenovo (generated)" id="1573221466998-11">
         <createTable tableName="suggestion">
             <column autoIncrement="true" name="id" type="BIGINT">
                 <constraints primaryKey="true" primaryKeyName="suggestionPK"/>
@@ -85,12 +86,97 @@
             <column name="price" type="DOUBLE"/>
             <column name="score" type="INT"/>
             <column name="start_date" type="date"/>
+            <column name="user_level_number" type="INT"/>
             <column name="brand_id" type="BIGINT"/>
             <column name="type_id" type="BIGINT"/>
             <column name="user_id" type="BIGINT"/>
         </createTable>
     </changeSet>
-    <changeSet author="lenovo (generated)" id="1573214168370-12">
+    <changeSet author="lenovo (generated)" id="1573221466998-12">
+        <createTable tableName="suggestion_accept">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints primaryKey="true" primaryKeyName="suggestion_acceptPK"/>
+            </column>
+            <column name="comment" type="VARCHAR(255)"/>
+            <column name="date" type="date"/>
+            <column name="suggestion_id" type="BIGINT"/>
+            <column name="user_id" type="BIGINT"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="lenovo (generated)" id="1573221466998-13">
+        <createTable tableName="suggestion_comment">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints primaryKey="true" primaryKeyName="suggestion_commentPK"/>
+            </column>
+            <column name="comment" type="VARCHAR(255)"/>
+            <column name="date" type="date"/>
+            <column name="suggestion_id" type="BIGINT"/>
+            <column name="user_id" type="BIGINT"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="lenovo (generated)" id="1573221466998-14">
+        <createTable tableName="system_suggestion">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints primaryKey="true" primaryKeyName="system_suggestionPK"/>
+            </column>
+            <column name="active" type="BIT"/>
+            <column name="comment" type="VARCHAR(255)"/>
+            <column name="en_name" type="VARCHAR(255)"/>
+            <column name="end_date" type="date"/>
+            <column name="fa_name" type="VARCHAR(255)"/>
+            <column name="img_1" type="LONGBLOB"/>
+            <column name="img_1_content_type" type="VARCHAR(255)"/>
+            <column name="img_2" type="LONGBLOB"/>
+            <column name="img_2_content_type" type="VARCHAR(255)"/>
+            <column name="img_3" type="LONGBLOB"/>
+            <column name="img_3_content_type" type="VARCHAR(255)"/>
+            <column name="img_4" type="LONGBLOB"/>
+            <column name="img_4_content_type" type="VARCHAR(255)"/>
+            <column name="price" type="DOUBLE"/>
+            <column name="score" type="INT"/>
+            <column name="start_date" type="date"/>
+            <column name="user_level_number" type="INT"/>
+            <column name="brand_id" type="BIGINT"/>
+            <column name="type_id" type="BIGINT"/>
+            <column name="user_id" type="BIGINT"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="lenovo (generated)" id="1573221466998-15">
+        <createTable tableName="system_suggestion_accept">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints primaryKey="true" primaryKeyName="system_suggestion_acceptPK"/>
+            </column>
+            <column name="comment" type="VARCHAR(255)"/>
+            <column name="date" type="date"/>
+            <column name="suggestion_id" type="BIGINT"/>
+            <column name="user_id" type="BIGINT"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="lenovo (generated)" id="1573221466998-16">
+        <createTable tableName="system_suggestion_comment">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints primaryKey="true" primaryKeyName="system_suggestion_commentPK"/>
+            </column>
+            <column name="comment" type="VARCHAR(255)"/>
+            <column name="date" type="date"/>
+            <column name="suggestion_id" type="BIGINT"/>
+            <column name="user_id" type="BIGINT"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="lenovo (generated)" id="1573221466998-17">
+        <createTable tableName="system_suggestion_discount">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints primaryKey="true" primaryKeyName="system_suggestion_discountPK"/>
+            </column>
+            <column name="accept_count" type="INT"/>
+            <column name="comment" type="VARCHAR(255)"/>
+            <column name="discount_percent" type="INT"/>
+            <column name="end_date" type="date"/>
+            <column name="start_date" type="date"/>
+            <column name="suggestion_id" type="BIGINT"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="lenovo (generated)" id="1573221466998-18">
         <createTable tableName="user_level">
             <column autoIncrement="true" name="id" type="BIGINT">
                 <constraints primaryKey="true" primaryKeyName="user_levelPK"/>
@@ -101,14 +187,14 @@
         </createTable>
     </changeSet>
 
-    <changeSet author="lenovo (generated)" id="1573214168370-4">
+    <changeSet author="lenovo (generated)" id="1573221466998-4">
         <createTable tableName="jhi_authority">
             <column name="name" type="VARCHAR(50)">
                 <constraints primaryKey="true" primaryKeyName="jhi_authorityPK"/>
             </column>
         </createTable>
     </changeSet>
-    <changeSet author="lenovo (generated)" id="1573214168370-5">
+    <changeSet author="lenovo (generated)" id="1573221466998-5">
         <createTable tableName="jhi_persistent_audit_event">
             <column autoIncrement="true" name="event_id" type="BIGINT">
                 <constraints primaryKey="true" primaryKeyName="jhi_persistent_audit_eventPK"/>
@@ -120,7 +206,7 @@
             </column>
         </createTable>
     </changeSet>
-    <changeSet author="lenovo (generated)" id="1573214168370-6">
+    <changeSet author="lenovo (generated)" id="1573221466998-6">
         <createTable tableName="jhi_persistent_audit_evt_data">
             <column name="event_id" type="BIGINT">
                 <constraints primaryKey="true"/>
@@ -131,7 +217,7 @@
             </column>
         </createTable>
     </changeSet>
-    <changeSet author="lenovo (generated)" id="1573214168370-7">
+    <changeSet author="lenovo (generated)" id="1573221466998-7">
         <createTable tableName="jhi_user">
             <column autoIncrement="true" name="id" type="BIGINT">
                 <constraints primaryKey="true" primaryKeyName="jhi_userPK"/>
@@ -161,7 +247,7 @@
             <column name="reset_key" type="VARCHAR(20)"/>
         </createTable>
     </changeSet>
-    <changeSet author="lenovo (generated)" id="1573214168370-8">
+    <changeSet author="lenovo (generated)" id="1573221466998-8">
         <createTable tableName="jhi_user_authority">
             <column name="user_id" type="BIGINT">
                 <constraints primaryKey="true"/>
@@ -172,39 +258,74 @@
         </createTable>
     </changeSet>
 
-
-
-    <changeSet author="lenovo (generated)" id="1573214168370-13">
+    <changeSet author="lenovo (generated)" id="1573221466998-19">
         <addUniqueConstraint columnNames="email" constraintName="UC_JHI_USEREMAIL_COL" tableName="jhi_user"/>
     </changeSet>
-    <changeSet author="lenovo (generated)" id="1573214168370-14">
+    <changeSet author="lenovo (generated)" id="1573221466998-20">
         <addUniqueConstraint columnNames="login" constraintName="UC_JHI_USERLOGIN_COL" tableName="jhi_user"/>
     </changeSet>
-    <changeSet author="lenovo (generated)" id="1573214168370-15">
+    <changeSet author="lenovo (generated)" id="1573221466998-21">
         <addForeignKeyConstraint baseColumnNames="user_id" baseTableName="jhi_user_authority" constraintName="FK290okww5jujghp4el5i7mgwu0" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="jhi_user" validate="true"/>
     </changeSet>
-    <changeSet author="lenovo (generated)" id="1573214168370-16">
+    <changeSet author="lenovo (generated)" id="1573221466998-22">
+        <addForeignKeyConstraint baseColumnNames="user_id" baseTableName="suggestion_comment" constraintName="FK2a72y0f5r9yja9rvlthq196h0" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="jhi_user" validate="true"/>
+    </changeSet>
+    <changeSet author="lenovo (generated)" id="1573221466998-23">
         <addForeignKeyConstraint baseColumnNames="event_id" baseTableName="jhi_persistent_audit_evt_data" constraintName="FK2ehnyx2si4tjd2nt4q7y40v8m" deferrable="false" initiallyDeferred="false" referencedColumnNames="event_id" referencedTableName="jhi_persistent_audit_event" validate="true"/>
     </changeSet>
-    <changeSet author="lenovo (generated)" id="1573214168370-17">
+    <changeSet author="lenovo (generated)" id="1573221466998-24">
         <addForeignKeyConstraint baseColumnNames="user_id" baseTableName="suggestion" constraintName="FK4b121xpsu95emc1ajw3q33ofp" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="jhi_user" validate="true"/>
     </changeSet>
-    <changeSet author="lenovo (generated)" id="1573214168370-18">
+    <changeSet author="lenovo (generated)" id="1573221466998-25">
         <addForeignKeyConstraint baseColumnNames="authority_name" baseTableName="jhi_user_authority" constraintName="FK4psxl0jtx6nr7rhqbynr6itoc" deferrable="false" initiallyDeferred="false" referencedColumnNames="name" referencedTableName="jhi_authority" validate="true"/>
     </changeSet>
-    <changeSet author="lenovo (generated)" id="1573214168370-19">
+    <changeSet author="lenovo (generated)" id="1573221466998-26">
+        <addForeignKeyConstraint baseColumnNames="user_id" baseTableName="system_suggestion" constraintName="FK6aja9ambnxb5r72rvajp681ge" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="jhi_user" validate="true"/>
+    </changeSet>
+    <changeSet author="lenovo (generated)" id="1573221466998-27">
+        <addForeignKeyConstraint baseColumnNames="suggestion_id" baseTableName="system_suggestion_discount" constraintName="FK6bgvroeiy2w8tnd5ax3bnvdk0" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="system_suggestion" validate="true"/>
+    </changeSet>
+    <changeSet author="lenovo (generated)" id="1573221466998-28">
         <addForeignKeyConstraint baseColumnNames="brand_id" baseTableName="suggestion" constraintName="FKacw8kdcif0o2950bmmwo18mrv" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="brand" validate="true"/>
     </changeSet>
-    <changeSet author="lenovo (generated)" id="1573214168370-20">
+    <changeSet author="lenovo (generated)" id="1573221466998-29">
+        <addForeignKeyConstraint baseColumnNames="user_id" baseTableName="system_suggestion_comment" constraintName="FKcgl9p6mgumxxdnx568okault6" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="jhi_user" validate="true"/>
+    </changeSet>
+    <changeSet author="lenovo (generated)" id="1573221466998-30">
+        <addForeignKeyConstraint baseColumnNames="user_id" baseTableName="system_suggestion_accept" constraintName="FKe3ld7oqabf3gnwx4s2x4xdbrn" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="jhi_user" validate="true"/>
+    </changeSet>
+    <changeSet author="lenovo (generated)" id="1573221466998-31">
+        <addForeignKeyConstraint baseColumnNames="suggestion_id" baseTableName="suggestion_comment" constraintName="FKesnw8ml5bd3ufgkuogejoilqo" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="suggestion" validate="true"/>
+    </changeSet>
+    <changeSet author="lenovo (generated)" id="1573221466998-32">
+        <addForeignKeyConstraint baseColumnNames="suggestion_id" baseTableName="system_suggestion_accept" constraintName="FKet9k8fppdaued9fa9gx48r5ke" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="system_suggestion" validate="true"/>
+    </changeSet>
+    <changeSet author="lenovo (generated)" id="1573221466998-33">
         <addForeignKeyConstraint baseColumnNames="parent_type_id" baseTableName="product_type" constraintName="FKh4v7bewqph3drlx7rrummhi38" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="product_type" validate="true"/>
     </changeSet>
-    <changeSet author="lenovo (generated)" id="1573214168370-21">
+    <changeSet author="lenovo (generated)" id="1573221466998-34">
+        <addForeignKeyConstraint baseColumnNames="user_id" baseTableName="suggestion_accept" constraintName="FKi53p11ti01dd9f4kuh9mb6eeq" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="jhi_user" validate="true"/>
+    </changeSet>
+    <changeSet author="lenovo (generated)" id="1573221466998-35">
         <addForeignKeyConstraint baseColumnNames="main_user_id" baseTableName="user_level" constraintName="FKkcotqt0g443h637j9oy6bf9da" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="jhi_user" validate="true"/>
     </changeSet>
-    <changeSet author="lenovo (generated)" id="1573214168370-22">
+    <changeSet author="lenovo (generated)" id="1573221466998-36">
+        <addForeignKeyConstraint baseColumnNames="suggestion_id" baseTableName="system_suggestion_comment" constraintName="FKkms8jfeddvmtuv42oghgayc78" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="system_suggestion" validate="true"/>
+    </changeSet>
+    <changeSet author="lenovo (generated)" id="1573221466998-37">
         <addForeignKeyConstraint baseColumnNames="type_id" baseTableName="suggestion" constraintName="FKn7x9025yt62dofpei5qdstdxj" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="product_type" validate="true"/>
     </changeSet>
-    <changeSet author="lenovo (generated)" id="1573214168370-23">
+    <changeSet author="lenovo (generated)" id="1573221466998-38">
+        <addForeignKeyConstraint baseColumnNames="suggestion_id" baseTableName="suggestion_accept" constraintName="FKp04nfgxa7ka9cnfvp3cn8ckwt" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="suggestion" validate="true"/>
+    </changeSet>
+    <changeSet author="lenovo (generated)" id="1573221466998-39">
+        <addForeignKeyConstraint baseColumnNames="type_id" baseTableName="system_suggestion" constraintName="FKr3ykjn4sq02l79niw8st75npw" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="product_type" validate="true"/>
+    </changeSet>
+    <changeSet author="lenovo (generated)" id="1573221466998-40">
+        <addForeignKeyConstraint baseColumnNames="brand_id" baseTableName="system_suggestion" constraintName="FKr4j2fachoa2higptkvrxkpb56" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="brand" validate="true"/>
+    </changeSet>
+    <changeSet author="lenovo (generated)" id="1573221466998-41">
         <addForeignKeyConstraint baseColumnNames="user_id" baseTableName="user_level" constraintName="FKtgerog9ra5c25sdvhsfcgxrk" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="jhi_user" validate="true"/>
     </changeSet>
+
 </databaseChangeLog>

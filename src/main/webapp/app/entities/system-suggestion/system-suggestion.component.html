@@ -1,0 +1,117 @@
+<div>
+    <h2 id="page-heading">
+        <span jhiTranslate="bettingApp.systemSuggestion.home.title">System Suggestions</span>
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-system-suggestion" [routerLink]="['/system-suggestion/new']">
+            <fa-icon [icon]="'plus'"></fa-icon>
+            <span  jhiTranslate="bettingApp.systemSuggestion.home.createLabel">
+            Create new System Suggestion
+            </span>
+        </button>
+    </h2>
+    <jhi-alert></jhi-alert>
+    <br/>
+    <div class="alert alert-warning" *ngIf="systemSuggestions?.length === 0">
+        <span jhiTranslate="bettingApp.systemSuggestion.home.notFound">No systemSuggestions found</span>
+    </div>
+    <div class="table-responsive" *ngIf="systemSuggestions?.length > 0">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+            <th><span jhiTranslate="global.field.id">ID</span></th>
+            <th><span jhiTranslate="bettingApp.systemSuggestion.faName">Fa Name</span></th>
+            <th><span jhiTranslate="bettingApp.systemSuggestion.enName">En Name</span></th>
+            <th><span jhiTranslate="bettingApp.systemSuggestion.startDate">Start Date</span></th>
+            <th><span jhiTranslate="bettingApp.systemSuggestion.endDate">End Date</span></th>
+            <th><span jhiTranslate="bettingApp.systemSuggestion.img1">Img 1</span></th>
+            <th><span jhiTranslate="bettingApp.systemSuggestion.img2">Img 2</span></th>
+            <th><span jhiTranslate="bettingApp.systemSuggestion.img3">Img 3</span></th>
+            <th><span jhiTranslate="bettingApp.systemSuggestion.img4">Img 4</span></th>
+            <th><span jhiTranslate="bettingApp.systemSuggestion.price">Price</span></th>
+            <th><span jhiTranslate="bettingApp.systemSuggestion.active">Active</span></th>
+            <th><span jhiTranslate="bettingApp.systemSuggestion.score">Score</span></th>
+            <th><span jhiTranslate="bettingApp.systemSuggestion.comment">Comment</span></th>
+            <th><span jhiTranslate="bettingApp.systemSuggestion.userLevelNumber">User Level Number</span></th>
+            <th><span jhiTranslate="bettingApp.systemSuggestion.type">Type</span></th>
+            <th><span jhiTranslate="bettingApp.systemSuggestion.brand">Brand</span></th>
+            <th><span jhiTranslate="bettingApp.systemSuggestion.user">User</span></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let systemSuggestion of systemSuggestions ;trackBy: trackId">
+                <td><a [routerLink]="['/system-suggestion', systemSuggestion.id, 'view' ]">{{systemSuggestion.id}}</a></td>
+                <td>{{systemSuggestion.faName}}</td>
+                <td>{{systemSuggestion.enName}}</td>
+                <td>{{systemSuggestion.startDate | date:'mediumDate'}}</td>
+                <td>{{systemSuggestion.endDate | date:'mediumDate'}}</td>
+                <td>
+                    <a *ngIf="systemSuggestion.img1" (click)="openFile(systemSuggestion.img1ContentType, systemSuggestion.img1)">
+                        <img [src]="'data:' + systemSuggestion.img1ContentType + ';base64,' + systemSuggestion.img1" style="max-height: 30px;" alt="systemSuggestion image"/>
+                    </a>
+                    <span *ngIf="systemSuggestion.img1">{{systemSuggestion.img1ContentType}}, {{byteSize(systemSuggestion.img1)}}</span>
+                </td>
+                <td>
+                    <a *ngIf="systemSuggestion.img2" (click)="openFile(systemSuggestion.img2ContentType, systemSuggestion.img2)">
+                        <img [src]="'data:' + systemSuggestion.img2ContentType + ';base64,' + systemSuggestion.img2" style="max-height: 30px;" alt="systemSuggestion image"/>
+                    </a>
+                    <span *ngIf="systemSuggestion.img2">{{systemSuggestion.img2ContentType}}, {{byteSize(systemSuggestion.img2)}}</span>
+                </td>
+                <td>
+                    <a *ngIf="systemSuggestion.img3" (click)="openFile(systemSuggestion.img3ContentType, systemSuggestion.img3)">
+                        <img [src]="'data:' + systemSuggestion.img3ContentType + ';base64,' + systemSuggestion.img3" style="max-height: 30px;" alt="systemSuggestion image"/>
+                    </a>
+                    <span *ngIf="systemSuggestion.img3">{{systemSuggestion.img3ContentType}}, {{byteSize(systemSuggestion.img3)}}</span>
+                </td>
+                <td>
+                    <a *ngIf="systemSuggestion.img4" (click)="openFile(systemSuggestion.img4ContentType, systemSuggestion.img4)">
+                        <img [src]="'data:' + systemSuggestion.img4ContentType + ';base64,' + systemSuggestion.img4" style="max-height: 30px;" alt="systemSuggestion image"/>
+                    </a>
+                    <span *ngIf="systemSuggestion.img4">{{systemSuggestion.img4ContentType}}, {{byteSize(systemSuggestion.img4)}}</span>
+                </td>
+                <td>{{systemSuggestion.price}}</td>
+                <td>{{systemSuggestion.active}}</td>
+                <td>{{systemSuggestion.score}}</td>
+                <td>{{systemSuggestion.comment}}</td>
+                <td>{{systemSuggestion.userLevelNumber}}</td>
+                <td>
+                    <div *ngIf="systemSuggestion.type">
+                        <a [routerLink]="['../product-type', systemSuggestion.type?.id, 'view' ]" >{{systemSuggestion.type?.id}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="systemSuggestion.brand">
+                        <a [routerLink]="['../brand', systemSuggestion.brand?.id, 'view' ]" >{{systemSuggestion.brand?.id}}</a>
+                    </div>
+                </td>
+                <td>
+                    {{systemSuggestion.user?.id}}
+                </td>
+                <td class="text-right">
+                    <div class="btn-group">
+                        <button type="submit"
+                                [routerLink]="['/system-suggestion', systemSuggestion.id, 'view' ]"
+                                class="btn btn-info btn-sm">
+                            <fa-icon [icon]="'eye'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/system-suggestion', systemSuggestion.id, 'edit']"
+                                class="btn btn-primary btn-sm">
+                            <fa-icon [icon]="'pencil-alt'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', 'system-suggestion', { outlets: { popup: systemSuggestion.id + '/delete'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-danger btn-sm">
+                            <fa-icon [icon]="'times'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

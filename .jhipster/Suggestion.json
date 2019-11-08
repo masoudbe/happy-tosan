@@ -52,6 +52,10 @@
         {
             "fieldName": "comment",
             "fieldType": "String"
+        },
+        {
+            "fieldName": "userLevelNumber",
+            "fieldType": "Integer"
         }
     ],
     "relationships": [
@@ -77,7 +81,7 @@
             "otherEntityField": "id"
         }
     ],
-    "changelogDate": "20191108114554",
+    "changelogDate": "20191108132131",
     "entityTableName": "suggestion",
     "dto": "no",
     "pagination": "no",

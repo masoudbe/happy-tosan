@@ -1,0 +1,49 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="systemSuggestionDiscount">
+            <h2><span jhiTranslate="bettingApp.systemSuggestionDiscount.detail.title">System Suggestion Discount</span> {{systemSuggestionDiscount.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="bettingApp.systemSuggestionDiscount.comment">Comment</span></dt>
+                <dd>
+                    <span>{{systemSuggestionDiscount.comment}}</span>
+                </dd>
+                <dt><span jhiTranslate="bettingApp.systemSuggestionDiscount.startDate">Start Date</span></dt>
+                <dd>
+                    <span>{{systemSuggestionDiscount.startDate}}</span>
+                </dd>
+                <dt><span jhiTranslate="bettingApp.systemSuggestionDiscount.endDate">End Date</span></dt>
+                <dd>
+                    <span>{{systemSuggestionDiscount.endDate}}</span>
+                </dd>
+                <dt><span jhiTranslate="bettingApp.systemSuggestionDiscount.discountPercent">Discount Percent</span></dt>
+                <dd>
+                    <span>{{systemSuggestionDiscount.discountPercent}}</span>
+                </dd>
+                <dt><span jhiTranslate="bettingApp.systemSuggestionDiscount.acceptCount">Accept Count</span></dt>
+                <dd>
+                    <span>{{systemSuggestionDiscount.acceptCount}}</span>
+                </dd>
+                <dt><span jhiTranslate="bettingApp.systemSuggestionDiscount.suggestion">Suggestion</span></dt>
+                <dd>
+                    <div *ngIf="systemSuggestionDiscount.suggestion">
+                        <a [routerLink]="['/system-suggestion', systemSuggestionDiscount.suggestion?.id, 'view']">{{systemSuggestionDiscount.suggestion?.id}}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/system-suggestion-discount', systemSuggestionDiscount.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

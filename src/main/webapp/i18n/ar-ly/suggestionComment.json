@@ -1,0 +1,25 @@
+{
+  "bettingApp": {
+    "suggestionComment": {
+      "home": {
+        "title": "Suggestion Comments",
+        "createLabel": "Create a new Suggestion Comment",
+        "createOrEditLabel": "Create or edit a Suggestion Comment",
+        "notFound": "No Suggestion Comment found"
+      },
+      "created": "A new Suggestion Comment is created with identifier {{ param }}",
+      "updated": "A Suggestion Comment is updated with identifier {{ param }}",
+      "deleted": "A Suggestion Comment is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Suggestion Comment {{ id }}?"
+      },
+      "detail": {
+        "title": "Suggestion Comment"
+      },
+      "comment": "Comment",
+      "date": "Date",
+      "user": "User",
+      "suggestion": "Suggestion"
+    }
+  }
+}

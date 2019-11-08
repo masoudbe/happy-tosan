@@ -1,0 +1,41 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="suggestionComment">
+            <h2><span jhiTranslate="bettingApp.suggestionComment.detail.title">Suggestion Comment</span> {{suggestionComment.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="bettingApp.suggestionComment.comment">Comment</span></dt>
+                <dd>
+                    <span>{{suggestionComment.comment}}</span>
+                </dd>
+                <dt><span jhiTranslate="bettingApp.suggestionComment.date">Date</span></dt>
+                <dd>
+                    <span>{{suggestionComment.date}}</span>
+                </dd>
+                <dt><span jhiTranslate="bettingApp.suggestionComment.user">User</span></dt>
+                <dd>
+                    {{suggestionComment.user?.id}}
+                </dd>
+                <dt><span jhiTranslate="bettingApp.suggestionComment.suggestion">Suggestion</span></dt>
+                <dd>
+                    <div *ngIf="suggestionComment.suggestion">
+                        <a [routerLink]="['/suggestion', suggestionComment.suggestion?.id, 'view']">{{suggestionComment.suggestion?.id}}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/suggestion-comment', suggestionComment.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,43 @@
+{
+    "name": "SystemSuggestionDiscount",
+    "fields": [
+        {
+            "fieldName": "comment",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "startDate",
+            "fieldType": "LocalDate"
+        },
+        {
+            "fieldName": "endDate",
+            "fieldType": "LocalDate"
+        },
+        {
+            "fieldName": "discountPercent",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "acceptCount",
+            "fieldType": "Integer"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "systemSuggestion",
+            "otherEntityRelationshipName": "systemSuggestionDiscount",
+            "relationshipName": "suggestion",
+            "otherEntityField": "id"
+        }
+    ],
+    "changelogDate": "20191108132137",
+    "entityTableName": "system_suggestion_discount",
+    "dto": "no",
+    "pagination": "no",
+    "service": "no",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*"
+}

@@ -1,0 +1,111 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="systemSuggestion">
+            <h2><span jhiTranslate="bettingApp.systemSuggestion.detail.title">System Suggestion</span> {{systemSuggestion.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="bettingApp.systemSuggestion.faName">Fa Name</span></dt>
+                <dd>
+                    <span>{{systemSuggestion.faName}}</span>
+                </dd>
+                <dt><span jhiTranslate="bettingApp.systemSuggestion.enName">En Name</span></dt>
+                <dd>
+                    <span>{{systemSuggestion.enName}}</span>
+                </dd>
+                <dt><span jhiTranslate="bettingApp.systemSuggestion.startDate">Start Date</span></dt>
+                <dd>
+                    <span>{{systemSuggestion.startDate}}</span>
+                </dd>
+                <dt><span jhiTranslate="bettingApp.systemSuggestion.endDate">End Date</span></dt>
+                <dd>
+                    <span>{{systemSuggestion.endDate}}</span>
+                </dd>
+                <dt><span jhiTranslate="bettingApp.systemSuggestion.img1">Img 1</span></dt>
+                <dd>
+                    <div *ngIf="systemSuggestion.img1">
+                        <a (click)="openFile(systemSuggestion.img1ContentType, systemSuggestion.img1)">
+                            <img [src]="'data:' + systemSuggestion.img1ContentType + ';base64,' + systemSuggestion.img1" style="max-width: 100%;" alt="systemSuggestion image"/>
+                        </a>
+                        {{systemSuggestion.img1ContentType}}, {{byteSize(systemSuggestion.img1)}}
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="bettingApp.systemSuggestion.img2">Img 2</span></dt>
+                <dd>
+                    <div *ngIf="systemSuggestion.img2">
+                        <a (click)="openFile(systemSuggestion.img2ContentType, systemSuggestion.img2)">
+                            <img [src]="'data:' + systemSuggestion.img2ContentType + ';base64,' + systemSuggestion.img2" style="max-width: 100%;" alt="systemSuggestion image"/>
+                        </a>
+                        {{systemSuggestion.img2ContentType}}, {{byteSize(systemSuggestion.img2)}}
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="bettingApp.systemSuggestion.img3">Img 3</span></dt>
+                <dd>
+                    <div *ngIf="systemSuggestion.img3">
+                        <a (click)="openFile(systemSuggestion.img3ContentType, systemSuggestion.img3)">
+                            <img [src]="'data:' + systemSuggestion.img3ContentType + ';base64,' + systemSuggestion.img3" style="max-width: 100%;" alt="systemSuggestion image"/>
+                        </a>
+                        {{systemSuggestion.img3ContentType}}, {{byteSize(systemSuggestion.img3)}}
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="bettingApp.systemSuggestion.img4">Img 4</span></dt>
+                <dd>
+                    <div *ngIf="systemSuggestion.img4">
+                        <a (click)="openFile(systemSuggestion.img4ContentType, systemSuggestion.img4)">
+                            <img [src]="'data:' + systemSuggestion.img4ContentType + ';base64,' + systemSuggestion.img4" style="max-width: 100%;" alt="systemSuggestion image"/>
+                        </a>
+                        {{systemSuggestion.img4ContentType}}, {{byteSize(systemSuggestion.img4)}}
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="bettingApp.systemSuggestion.price">Price</span></dt>
+                <dd>
+                    <span>{{systemSuggestion.price}}</span>
+                </dd>
+                <dt><span jhiTranslate="bettingApp.systemSuggestion.active">Active</span></dt>
+                <dd>
+                    <span>{{systemSuggestion.active}}</span>
+                </dd>
+                <dt><span jhiTranslate="bettingApp.systemSuggestion.score">Score</span></dt>
+                <dd>
+                    <span>{{systemSuggestion.score}}</span>
+                </dd>
+                <dt><span jhiTranslate="bettingApp.systemSuggestion.comment">Comment</span></dt>
+                <dd>
+                    <span>{{systemSuggestion.comment}}</span>
+                </dd>
+                <dt><span jhiTranslate="bettingApp.systemSuggestion.userLevelNumber">User Level Number</span></dt>
+                <dd>
+                    <span>{{systemSuggestion.userLevelNumber}}</span>
+                </dd>
+                <dt><span jhiTranslate="bettingApp.systemSuggestion.type">Type</span></dt>
+                <dd>
+                    <div *ngIf="systemSuggestion.type">
+                        <a [routerLink]="['/product-type', systemSuggestion.type?.id, 'view']">{{systemSuggestion.type?.id}}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="bettingApp.systemSuggestion.brand">Brand</span></dt>
+                <dd>
+                    <div *ngIf="systemSuggestion.brand">
+                        <a [routerLink]="['/brand', systemSuggestion.brand?.id, 'view']">{{systemSuggestion.brand?.id}}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="bettingApp.systemSuggestion.user">User</span></dt>
+                <dd>
+                    {{systemSuggestion.user?.id}}
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/system-suggestion', systemSuggestion.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

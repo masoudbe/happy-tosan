@@ -50,6 +50,12 @@ public class CacheConfiguration {
             createCache(cm, com.tosan.betting.domain.ProductType.class.getName());
             createCache(cm, com.tosan.betting.domain.Brand.class.getName());
             createCache(cm, com.tosan.betting.domain.Suggestion.class.getName());
+            createCache(cm, com.tosan.betting.domain.SystemSuggestion.class.getName());
+            createCache(cm, com.tosan.betting.domain.SuggestionComment.class.getName());
+            createCache(cm, com.tosan.betting.domain.SystemSuggestionComment.class.getName());
+            createCache(cm, com.tosan.betting.domain.SuggestionAccept.class.getName());
+            createCache(cm, com.tosan.betting.domain.SystemSuggestionAccept.class.getName());
+            createCache(cm, com.tosan.betting.domain.SystemSuggestionDiscount.class.getName());
             // jhipster-needle-ehcache-add-entry
         };
     }

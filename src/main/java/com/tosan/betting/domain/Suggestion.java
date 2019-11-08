@@ -74,6 +74,9 @@ public class Suggestion implements Serializable {
     @Column(name = "comment")
     private String comment;
 
+    @Column(name = "user_level_number")
+    private Integer userLevelNumber;
+
     @ManyToOne
     @JsonIgnoreProperties("suggestions")
     private ProductType type;
@@ -303,6 +306,19 @@ public class Suggestion implements Serializable {
         this.comment = comment;
     }
 
+    public Integer getUserLevelNumber() {
+        return userLevelNumber;
+    }
+
+    public Suggestion userLevelNumber(Integer userLevelNumber) {
+        this.userLevelNumber = userLevelNumber;
+        return this;
+    }
+
+    public void setUserLevelNumber(Integer userLevelNumber) {
+        this.userLevelNumber = userLevelNumber;
+    }
+
     public ProductType getType() {
         return type;
     }
@@ -379,6 +395,7 @@ public class Suggestion implements Serializable {
             ", active='" + isActive() + "'" +
             ", score=" + getScore() +
             ", comment='" + getComment() + "'" +
+            ", userLevelNumber=" + getUserLevelNumber() +
             "}";
     }
 }

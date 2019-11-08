@@ -30,6 +30,7 @@
             <th><span jhiTranslate="bettingApp.suggestion.active">Active</span></th>
             <th><span jhiTranslate="bettingApp.suggestion.score">Score</span></th>
             <th><span jhiTranslate="bettingApp.suggestion.comment">Comment</span></th>
+            <th><span jhiTranslate="bettingApp.suggestion.userLevelNumber">User Level Number</span></th>
             <th><span jhiTranslate="bettingApp.suggestion.type">Type</span></th>
             <th><span jhiTranslate="bettingApp.suggestion.brand">Brand</span></th>
             <th><span jhiTranslate="bettingApp.suggestion.user">User</span></th>
@@ -71,6 +72,7 @@
                 <td>{{suggestion.active}}</td>
                 <td>{{suggestion.score}}</td>
                 <td>{{suggestion.comment}}</td>
+                <td>{{suggestion.userLevelNumber}}</td>
                 <td>
                     <div *ngIf="suggestion.type">
                         <a [routerLink]="['../product-type', suggestion.type?.id, 'view' ]" >{{suggestion.type?.id}}</a>

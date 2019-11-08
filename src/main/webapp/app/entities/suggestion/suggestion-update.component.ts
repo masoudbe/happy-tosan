@@ -47,6 +47,7 @@ export class SuggestionUpdateComponent implements OnInit {
     active: [],
     score: [],
     comment: [],
+    userLevelNumber: [],
     type: [],
     brand: [],
     user: []
@@ -111,6 +112,7 @@ export class SuggestionUpdateComponent implements OnInit {
       active: suggestion.active,
       score: suggestion.score,
       comment: suggestion.comment,
+      userLevelNumber: suggestion.userLevelNumber,
       type: suggestion.type,
       brand: suggestion.brand,
       user: suggestion.user
@@ -193,6 +195,7 @@ export class SuggestionUpdateComponent implements OnInit {
       active: this.editForm.get(['active']).value,
       score: this.editForm.get(['score']).value,
       comment: this.editForm.get(['comment']).value,
+      userLevelNumber: this.editForm.get(['userLevelNumber']).value,
       type: this.editForm.get(['type']).value,
       brand: this.editForm.get(['brand']).value,
       user: this.editForm.get(['user']).value

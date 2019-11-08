@@ -1,0 +1,25 @@
+{
+  "bettingApp": {
+    "suggestionAccept": {
+      "home": {
+        "title": "Suggestion Accepts",
+        "createLabel": "Create a new Suggestion Accept",
+        "createOrEditLabel": "Create or edit a Suggestion Accept",
+        "notFound": "No Suggestion Accept found"
+      },
+      "created": "A new Suggestion Accept is created with identifier {{ param }}",
+      "updated": "A Suggestion Accept is updated with identifier {{ param }}",
+      "deleted": "A Suggestion Accept is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Suggestion Accept {{ id }}?"
+      },
+      "detail": {
+        "title": "Suggestion Accept"
+      },
+      "comment": "Comment",
+      "date": "Date",
+      "user": "User",
+      "suggestion": "Suggestion"
+    }
+  }
+}

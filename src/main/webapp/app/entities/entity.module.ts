@@ -31,6 +31,30 @@ import { RouterModule } from '@angular/router';
       {
         path: 'suggestion',
         loadChildren: './suggestion/suggestion.module#BettingSuggestionModule'
+      },
+      {
+        path: 'system-suggestion',
+        loadChildren: './system-suggestion/system-suggestion.module#BettingSystemSuggestionModule'
+      },
+      {
+        path: 'suggestion-comment',
+        loadChildren: './suggestion-comment/suggestion-comment.module#BettingSuggestionCommentModule'
+      },
+      {
+        path: 'system-suggestion-comment',
+        loadChildren: './system-suggestion-comment/system-suggestion-comment.module#BettingSystemSuggestionCommentModule'
+      },
+      {
+        path: 'suggestion-accept',
+        loadChildren: './suggestion-accept/suggestion-accept.module#BettingSuggestionAcceptModule'
+      },
+      {
+        path: 'system-suggestion-accept',
+        loadChildren: './system-suggestion-accept/system-suggestion-accept.module#BettingSystemSuggestionAcceptModule'
+      },
+      {
+        path: 'system-suggestion-discount',
+        loadChildren: './system-suggestion-discount/system-suggestion-discount.module#BettingSystemSuggestionDiscountModule'
       }
       /* jhipster-needle-add-entity-route - JHipster will add entity modules routes here */
     ])

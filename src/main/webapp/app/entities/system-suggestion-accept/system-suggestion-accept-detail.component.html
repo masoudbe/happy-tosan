@@ -1,0 +1,41 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="systemSuggestionAccept">
+            <h2><span jhiTranslate="bettingApp.systemSuggestionAccept.detail.title">System Suggestion Accept</span> {{systemSuggestionAccept.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="bettingApp.systemSuggestionAccept.comment">Comment</span></dt>
+                <dd>
+                    <span>{{systemSuggestionAccept.comment}}</span>
+                </dd>
+                <dt><span jhiTranslate="bettingApp.systemSuggestionAccept.date">Date</span></dt>
+                <dd>
+                    <span>{{systemSuggestionAccept.date}}</span>
+                </dd>
+                <dt><span jhiTranslate="bettingApp.systemSuggestionAccept.user">User</span></dt>
+                <dd>
+                    {{systemSuggestionAccept.user?.id}}
+                </dd>
+                <dt><span jhiTranslate="bettingApp.systemSuggestionAccept.suggestion">Suggestion</span></dt>
+                <dd>
+                    <div *ngIf="systemSuggestionAccept.suggestion">
+                        <a [routerLink]="['/system-suggestion', systemSuggestionAccept.suggestion?.id, 'view']">{{systemSuggestionAccept.suggestion?.id}}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/system-suggestion-accept', systemSuggestionAccept.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

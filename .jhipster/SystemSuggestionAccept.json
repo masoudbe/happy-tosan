@@ -1,0 +1,38 @@
+{
+    "name": "SystemSuggestionAccept",
+    "fields": [
+        {
+            "fieldName": "comment",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "date",
+            "fieldType": "LocalDate"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "user",
+            "otherEntityRelationshipName": "systemSuggestionAccept",
+            "relationshipName": "user",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "systemSuggestion",
+            "otherEntityRelationshipName": "systemSuggestionAccept",
+            "relationshipName": "suggestion",
+            "otherEntityField": "id"
+        }
+    ],
+    "changelogDate": "20191108132136",
+    "entityTableName": "system_suggestion_accept",
+    "dto": "no",
+    "pagination": "no",
+    "service": "no",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*"
+}

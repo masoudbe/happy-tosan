@@ -1,0 +1,166 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+            <h2 id="jhi-system-suggestion-heading" jhiTranslate="bettingApp.systemSuggestion.home.createOrEditLabel">Create or edit a System Suggestion</h2>
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+                <div class="form-group" [hidden]="!editForm.get('id').value">
+                    <label for="id" jhiTranslate="global.field.id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id" formControlName="id"
+                        readonly />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="bettingApp.systemSuggestion.faName" for="field_faName">Fa Name</label>
+                    <input type="text" class="form-control" name="faName" id="field_faName"
+                           formControlName="faName"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="bettingApp.systemSuggestion.enName" for="field_enName">En Name</label>
+                    <input type="text" class="form-control" name="enName" id="field_enName"
+                           formControlName="enName"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="bettingApp.systemSuggestion.startDate" for="field_startDate">Start Date</label>
+                    <div class="input-group">
+                        <input id="field_startDate" type="text" class="form-control" name="startDate" ngbDatepicker  #startDateDp="ngbDatepicker" formControlName="startDate"/>
+                        <span class="input-group-append">
+                            <button type="button" class="btn btn-secondary" (click)="startDateDp.toggle()"><fa-icon [icon]="'calendar-alt'"></fa-icon></button>
+                        </span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="bettingApp.systemSuggestion.endDate" for="field_endDate">End Date</label>
+                    <div class="input-group">
+                        <input id="field_endDate" type="text" class="form-control" name="endDate" ngbDatepicker  #endDateDp="ngbDatepicker" formControlName="endDate"/>
+                        <span class="input-group-append">
+                            <button type="button" class="btn btn-secondary" (click)="endDateDp.toggle()"><fa-icon [icon]="'calendar-alt'"></fa-icon></button>
+                        </span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="bettingApp.systemSuggestion.img1" for="field_img1">Img 1</label>
+                    <div>
+                        <img [src]="'data:' + editForm.get('img1ContentType').value + ';base64,' + editForm.get('img1').value" style="max-height: 100px;" *ngIf="editForm.get('img1').value" alt="systemSuggestion image"/>
+                        <div *ngIf="editForm.get('img1').value" class="form-text text-danger clearfix">
+                            <span class="pull-left">{{editForm.get('img1ContentType').value}}, {{byteSize(editForm.get('img1').value)}}</span>
+                            <button type="button" (click)="clearInputImage('img1', 'img1ContentType', 'fileImage')" class="btn btn-secondary btn-xs pull-right">
+                                <fa-icon [icon]="'times'"></fa-icon>
+                            </button>
+                        </div>
+                        <input type="file" id="file_img1" (change)="setFileData($event, 'img1', true)" accept="image/*" jhiTranslate="entity.action.addimage"/>
+                    </div>
+                    <input type="hidden" class="form-control" name="img1" id="field_img1"
+                           formControlName="img1"/>
+                    <input type="hidden" class="form-control" name="img1ContentType" id="field_img1ContentType"
+                           formControlName="img1ContentType" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="bettingApp.systemSuggestion.img2" for="field_img2">Img 2</label>
+                    <div>
+                        <img [src]="'data:' + editForm.get('img2ContentType').value + ';base64,' + editForm.get('img2').value" style="max-height: 100px;" *ngIf="editForm.get('img2').value" alt="systemSuggestion image"/>
+                        <div *ngIf="editForm.get('img2').value" class="form-text text-danger clearfix">
+                            <span class="pull-left">{{editForm.get('img2ContentType').value}}, {{byteSize(editForm.get('img2').value)}}</span>
+                            <button type="button" (click)="clearInputImage('img2', 'img2ContentType', 'fileImage')" class="btn btn-secondary btn-xs pull-right">
+                                <fa-icon [icon]="'times'"></fa-icon>
+                            </button>
+                        </div>
+                        <input type="file" id="file_img2" (change)="setFileData($event, 'img2', true)" accept="image/*" jhiTranslate="entity.action.addimage"/>
+                    </div>
+                    <input type="hidden" class="form-control" name="img2" id="field_img2"
+                           formControlName="img2"/>
+                    <input type="hidden" class="form-control" name="img2ContentType" id="field_img2ContentType"
+                           formControlName="img2ContentType" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="bettingApp.systemSuggestion.img3" for="field_img3">Img 3</label>
+                    <div>
+                        <img [src]="'data:' + editForm.get('img3ContentType').value + ';base64,' + editForm.get('img3').value" style="max-height: 100px;" *ngIf="editForm.get('img3').value" alt="systemSuggestion image"/>
+                        <div *ngIf="editForm.get('img3').value" class="form-text text-danger clearfix">
+                            <span class="pull-left">{{editForm.get('img3ContentType').value}}, {{byteSize(editForm.get('img3').value)}}</span>
+                            <button type="button" (click)="clearInputImage('img3', 'img3ContentType', 'fileImage')" class="btn btn-secondary btn-xs pull-right">
+                                <fa-icon [icon]="'times'"></fa-icon>
+                            </button>
+                        </div>
+                        <input type="file" id="file_img3" (change)="setFileData($event, 'img3', true)" accept="image/*" jhiTranslate="entity.action.addimage"/>
+                    </div>
+                    <input type="hidden" class="form-control" name="img3" id="field_img3"
+                           formControlName="img3"/>
+                    <input type="hidden" class="form-control" name="img3ContentType" id="field_img3ContentType"
+                           formControlName="img3ContentType" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="bettingApp.systemSuggestion.img4" for="field_img4">Img 4</label>
+                    <div>
+                        <img [src]="'data:' + editForm.get('img4ContentType').value + ';base64,' + editForm.get('img4').value" style="max-height: 100px;" *ngIf="editForm.get('img4').value" alt="systemSuggestion image"/>
+                        <div *ngIf="editForm.get('img4').value" class="form-text text-danger clearfix">
+                            <span class="pull-left">{{editForm.get('img4ContentType').value}}, {{byteSize(editForm.get('img4').value)}}</span>
+                            <button type="button" (click)="clearInputImage('img4', 'img4ContentType', 'fileImage')" class="btn btn-secondary btn-xs pull-right">
+                                <fa-icon [icon]="'times'"></fa-icon>
+                            </button>
+                        </div>
+                        <input type="file" id="file_img4" (change)="setFileData($event, 'img4', true)" accept="image/*" jhiTranslate="entity.action.addimage"/>
+                    </div>
+                    <input type="hidden" class="form-control" name="img4" id="field_img4"
+                           formControlName="img4"/>
+                    <input type="hidden" class="form-control" name="img4ContentType" id="field_img4ContentType"
+                           formControlName="img4ContentType" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="bettingApp.systemSuggestion.price" for="field_price">Price</label>
+                    <input type="number" class="form-control" name="price" id="field_price"
+                           formControlName="price"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="bettingApp.systemSuggestion.active" for="field_active">Active</label>
+                    <input type="checkbox" class="form-control" name="active" id="field_active"
+                           formControlName="active"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="bettingApp.systemSuggestion.score" for="field_score">Score</label>
+                    <input type="number" class="form-control" name="score" id="field_score"
+                           formControlName="score"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="bettingApp.systemSuggestion.comment" for="field_comment">Comment</label>
+                    <input type="text" class="form-control" name="comment" id="field_comment"
+                           formControlName="comment"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="bettingApp.systemSuggestion.userLevelNumber" for="field_userLevelNumber">User Level Number</label>
+                    <input type="number" class="form-control" name="userLevelNumber" id="field_userLevelNumber"
+                           formControlName="userLevelNumber"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="bettingApp.systemSuggestion.type" for="field_type">Type</label>
+                    <select class="form-control" id="field_type" name="type" formControlName="type">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="productTypeOption.id === editForm.get('type').value?.id ? editForm.get('type').value : productTypeOption" *ngFor="let productTypeOption of producttypes; trackBy: trackProductTypeById">{{productTypeOption.id}}</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="bettingApp.systemSuggestion.brand" for="field_brand">Brand</label>
+                    <select class="form-control" id="field_brand" name="brand" formControlName="brand">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="brandOption.id === editForm.get('brand').value?.id ? editForm.get('brand').value : brandOption" *ngFor="let brandOption of brands; trackBy: trackBrandById">{{brandOption.id}}</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="bettingApp.systemSuggestion.user" for="field_user">User</label>
+                    <select class="form-control" id="field_user" name="user" formControlName="user">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="userOption.id === editForm.get('user').value?.id ? editForm.get('user').value : userOption" *ngFor="let userOption of users; trackBy: trackUserById">{{userOption.id}}</option>
+                    </select>
+                </div>
+            </div>
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary"  (click)="previousState()">
+                    <fa-icon [icon]="'ban'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+                </button>
+                <button type="submit" id="save-entity" [disabled]="editForm.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon [icon]="'save'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

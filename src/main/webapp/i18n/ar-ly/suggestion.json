@@ -28,6 +28,7 @@
       "active": "Active",
       "score": "Score",
       "comment": "Comment",
+      "userLevelNumber": "User Level Number",
       "type": "Type",
       "brand": "Brand",
       "user": "User"

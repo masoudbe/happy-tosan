@@ -23,11 +23,71 @@
     active Boolean
     score Integer
     comment String
+    userLevelNumber Integer
  }
+
+ entity SystemSuggestion {
+    faName String
+    enName String
+    startDate LocalDate
+    endDate LocalDate
+    img1 ImageBlob
+    img2 ImageBlob
+    img3 ImageBlob
+    img4 ImageBlob
+    price Double
+    active Boolean
+    score Integer
+    comment String
+    userLevelNumber Integer
+ }
+
+ entity SuggestionComment {
+    comment String
+    date LocalDate
+ }
+
+ entity SystemSuggestionComment {
+    comment String
+    date LocalDate
+ }
+
+  entity SuggestionAccept {
+     comment String
+     date LocalDate
+  }
+
+  entity SystemSuggestionAccept {
+     comment String
+     date LocalDate
+  }
+
+  entity SystemSuggestionDiscount {
+    comment String
+    startDate LocalDate
+    endDate LocalDate
+    discountPercent Integer
+    acceptCount Integer
+  }
 
   relationship ManyToOne {
      ProductType{parentType} to ProductType,
+
      Suggestion{type} to ProductType,
      Suggestion{brand} to Brand,
-     Suggestion{user} to User
+     Suggestion{user} to User,
+     SuggestionComment{user} to User,
+     SuggestionComment{suggestion} to Suggestion,
+     SuggestionAccept{user} to User,
+     SuggestionAccept{suggestion} to Suggestion,
+
+     SystemSuggestion{type} to ProductType,
+     SystemSuggestion{brand} to Brand,
+     SystemSuggestion{user} to User,
+     SystemSuggestionComment{user} to User,
+     SystemSuggestionComment{suggestion} to SystemSuggestion,
+     SystemSuggestionAccept{user} to User,
+     SystemSuggestionAccept{suggestion} to SystemSuggestion,
+
+     SystemSuggestionDiscount{suggestion} to SystemSuggestion
  }
