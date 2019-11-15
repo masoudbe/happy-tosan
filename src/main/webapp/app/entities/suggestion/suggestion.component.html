@@ -13,7 +13,56 @@
     <div class="alert alert-warning" *ngIf="suggestions?.length === 0">
         <span jhiTranslate="bettingApp.suggestion.home.notFound">No suggestions found</span>
     </div>
-    <div class="table-responsive" *ngIf="suggestions?.length > 0">
+
+    <div *ngIf="suggestions?.length > 0">
+        <div class="card" *ngFor="let suggestion of suggestions ;trackBy: trackId">
+            <a *ngIf="suggestion.img1" (click)="openFile(suggestion.img1ContentType, suggestion.img1)">
+                <img [src]="'data:' + suggestion.img1ContentType + ';base64,' + suggestion.img1" style="max-height: 60px;" alt="suggestion image"/>
+            </a>
+            <div class="container">
+                <h4><b>{{suggestion.faName}}</b></h4>
+                <p>{{suggestion.startDate | date:'mediumDate'}}</p>
+                <p>{{suggestion.endDate | date:'mediumDate'}}</p>
+                <p>{{suggestion.price}}</p>
+                <p>{{suggestion.score}}</p>
+                <p>{{suggestion.comment}}</p>
+                <p>
+                    <div *ngIf="suggestion.type">
+                        <a [routerLink]="['../product-type', suggestion.type?.id, 'view' ]" >{{suggestion.type?.id}}</a>
+                    </div>
+                </p>
+                <p>
+                    <div *ngIf="suggestion.brand">
+                        <a [routerLink]="['../brand', suggestion.brand?.id, 'view' ]" >{{suggestion.brand?.id}}</a>
+                    </div>
+                </p>
+                <p>
+                    <button type="submit"
+                            [routerLink]="['/suggestion', suggestion.id, 'view' ]"
+                            class="btn btn-info btn-sm">
+                        <fa-icon [icon]="'eye'"></fa-icon>
+                        <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                    </button>
+                    <button type="submit"
+                            [routerLink]="['/suggestion', suggestion.id, 'edit']"
+                            class="btn btn-primary btn-sm">
+                        <fa-icon [icon]="'pencil-alt'"></fa-icon>
+                        <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                    </button>
+                    <button type="submit"
+                            [routerLink]="['/', 'suggestion', { outlets: { popup: suggestion.id + '/delete'} }]"
+                            replaceUrl="true"
+                            queryParamsHandling="merge"
+                            class="btn btn-danger btn-sm">
+                        <fa-icon [icon]="'times'"></fa-icon>
+                        <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                    </button>
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <div style="display: none" class="table-responsive" *ngIf="suggestions?.length > 0">
         <table class="table table-striped">
             <thead>
             <tr>

@@ -1,7 +1,12 @@
 package com.tosan.betting.web.rest;
 
 import com.tosan.betting.domain.Suggestion;
+import com.tosan.betting.domain.User;
+import com.tosan.betting.domain.UserLevel;
 import com.tosan.betting.repository.SuggestionRepository;
+import com.tosan.betting.security.SecurityUtils;
+import com.tosan.betting.service.UserLevelService;
+import com.tosan.betting.service.UserService;
 import com.tosan.betting.web.rest.errors.BadRequestAlertException;
 
 import io.github.jhipster.web.util.HeaderUtil;
@@ -15,8 +20,10 @@ import org.springframework.web.bind.annotation.*;
 import java.net.URI;
 import java.net.URISyntaxException;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 /**
  * REST controller for managing {@link com.tosan.betting.domain.Suggestion}.
@@ -28,14 +35,18 @@ public class SuggestionResource {
     private final Logger log = LoggerFactory.getLogger(SuggestionResource.class);
 
     private static final String ENTITY_NAME = "suggestion";
+    private final UserService userService;
+    private final UserLevelService userLevelService;
 
     @Value("${jhipster.clientApp.name}")
     private String applicationName;
 
     private final SuggestionRepository suggestionRepository;
 
-    public SuggestionResource(SuggestionRepository suggestionRepository) {
+    public SuggestionResource(SuggestionRepository suggestionRepository, UserService userService, UserLevelService userLevelService) {
         this.suggestionRepository = suggestionRepository;
+        this.userService = userService;
+        this.userLevelService = userLevelService;
     }
 
     /**
@@ -51,6 +62,7 @@ public class SuggestionResource {
         if (suggestion.getId() != null) {
             throw new BadRequestAlertException("A new suggestion cannot already have an ID", ENTITY_NAME, "idexists");
         }
+        suggestion.setUser(userService.getUserWithAuthorities().get());
         Suggestion result = suggestionRepository.save(suggestion);
         return ResponseEntity.created(new URI("/api/suggestions/" + result.getId()))
             .headers(HeaderUtil.createEntityCreationAlert(applicationName, true, ENTITY_NAME, result.getId().toString()))
@@ -86,7 +98,25 @@ public class SuggestionResource {
     @GetMapping("/suggestions")
     public List<Suggestion> getAllSuggestions() {
         log.debug("REST request to get all Suggestions");
-        return suggestionRepository.findAll();
+        User user = userService.getUserWithAuthorities().get();
+        List<Suggestion> result = new ArrayList<>();
+        List<UserLevel> userLevels = userLevelService.getAllUserLevelsByUserId(user.getId().toString());
+        List<Suggestion> allSuggestion = suggestionRepository.findAll();
+        for(Suggestion suggestion : allSuggestion){
+            if(suggestion.getUser() != null && suggestion.getUser().getId() == user.getId()){
+                result.add(suggestion);
+            }
+            else if(suggestion.getUser() != null){
+                List<UserLevel> userLevelList = userLevels.stream()
+                    .filter(p -> p.getMainUser().getId() == suggestion.getUser().getId()
+                        && p.getLevel() >= suggestion.getUserLevelNumber()).collect(Collectors.toList());
+                if(userLevelList.size() != 0){
+                    result.add(suggestion);
+                }
+            }
+        }
+
+        return result;
     }
 
     /**

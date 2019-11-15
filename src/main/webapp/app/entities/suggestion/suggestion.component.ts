@@ -10,7 +10,8 @@ import { SuggestionService } from './suggestion.service';
 
 @Component({
   selector: 'jhi-suggestion',
-  templateUrl: './suggestion.component.html'
+  templateUrl: './suggestion.component.html',
+  styleUrls: ['./suggestion.component.scss']
 })
 export class SuggestionComponent implements OnInit, OnDestroy {
   suggestions: ISuggestion[];

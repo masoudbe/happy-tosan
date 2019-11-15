@@ -145,7 +145,7 @@
                         <option [ngValue]="brandOption.id === editForm.get('brand').value?.id ? editForm.get('brand').value : brandOption" *ngFor="let brandOption of brands; trackBy: trackBrandById">{{brandOption.id}}</option>
                     </select>
                 </div>
-                <div class="form-group">
+                <div class="form-group" style="display: none">
                     <label class="form-control-label" jhiTranslate="bettingApp.suggestion.user" for="field_user">User</label>
                     <select class="form-control" id="field_user" name="user" formControlName="user">
                         <option [ngValue]="null"></option>
