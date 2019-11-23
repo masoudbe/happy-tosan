@@ -21,7 +21,7 @@ import java.util.List;
 @Service
 @Transactional
 public class UserLevelService {
-    private final Logger log = LoggerFactory.getLogger(UserService.class);
+    private final Logger log = LoggerFactory.getLogger(UserLevelService.class);
     private final UserLevelRepository userLevelRepository;
 
     public UserLevelService(UserLevelRepository userLevelRepository) {
@@ -29,7 +29,7 @@ public class UserLevelService {
     }
 
     @Transactional(readOnly = true)
-    public List<UserLevel> getAllUserLevelsByUserId(String userId) {
+    public List<UserLevel> getAllUserLevelsByUserId(Long userId) {
         return userLevelRepository.findByUser(userId);
     }
 

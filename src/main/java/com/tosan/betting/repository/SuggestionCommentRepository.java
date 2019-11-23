@@ -1,5 +1,6 @@
 package com.tosan.betting.repository;
 
+import com.tosan.betting.domain.Suggestion;
 import com.tosan.betting.domain.SuggestionComment;
 import org.springframework.data.jpa.repository.*;
 import org.springframework.stereotype.Repository;
@@ -15,5 +16,7 @@ public interface SuggestionCommentRepository extends JpaRepository<SuggestionCom
 
     @Query("select suggestionComment from SuggestionComment suggestionComment where suggestionComment.user.login = ?#{principal.username}")
     List<SuggestionComment> findByUserIsCurrentUser();
+
+    List<SuggestionComment> findBySuggestion(Suggestion sg);
 
 }

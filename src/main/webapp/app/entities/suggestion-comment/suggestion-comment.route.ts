@@ -18,7 +18,13 @@ export class SuggestionCommentResolve implements Resolve<ISuggestionComment> {
 
   resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<ISuggestionComment> {
     const id = route.params['id'] ? route.params['id'] : null;
-    if (id) {
+    if(route.url.length == 2 && route.url[1].path == 'suggestionView'){
+      return this.service.findBy(id, 'suggestion').pipe(
+        filter((response: HttpResponse<SuggestionComment>) => response.ok),
+        map((suggestionComment: HttpResponse<SuggestionComment>) => suggestionComment.body)
+      );
+    }
+    else if(id){
       return this.service.find(id).pipe(
         filter((response: HttpResponse<SuggestionComment>) => response.ok),
         map((suggestionComment: HttpResponse<SuggestionComment>) => suggestionComment.body)
@@ -32,6 +38,18 @@ export const suggestionCommentRoute: Routes = [
   {
     path: '',
     component: SuggestionCommentComponent,
+    data: {
+      authorities: ['ROLE_USER'],
+      pageTitle: 'bettingApp.suggestionComment.home.title'
+    },
+    canActivate: [UserRouteAccessService]
+  },
+  {
+    path: ':id/suggestionView',
+    component: SuggestionCommentComponent,
+    resolve: {
+      suggestionComment: SuggestionCommentResolve
+    },
     data: {
       authorities: ['ROLE_USER'],
       pageTitle: 'bettingApp.suggestionComment.home.title'

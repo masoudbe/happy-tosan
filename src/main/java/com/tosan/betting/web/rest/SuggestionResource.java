@@ -2,13 +2,9 @@ package com.tosan.betting.web.rest;
 
 import com.tosan.betting.domain.Suggestion;
 import com.tosan.betting.domain.User;
-import com.tosan.betting.domain.UserLevel;
 import com.tosan.betting.repository.SuggestionRepository;
-import com.tosan.betting.security.SecurityUtils;
-import com.tosan.betting.service.UserLevelService;
 import com.tosan.betting.service.UserService;
 import com.tosan.betting.web.rest.errors.BadRequestAlertException;
-
 import io.github.jhipster.web.util.HeaderUtil;
 import io.github.jhipster.web.util.ResponseUtil;
 import org.slf4j.Logger;
@@ -19,11 +15,9 @@ import org.springframework.web.bind.annotation.*;
 
 import java.net.URI;
 import java.net.URISyntaxException;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
-import java.util.stream.Collectors;
 
 /**
  * REST controller for managing {@link com.tosan.betting.domain.Suggestion}.
@@ -36,17 +30,15 @@ public class SuggestionResource {
 
     private static final String ENTITY_NAME = "suggestion";
     private final UserService userService;
-    private final UserLevelService userLevelService;
 
     @Value("${jhipster.clientApp.name}")
     private String applicationName;
 
     private final SuggestionRepository suggestionRepository;
 
-    public SuggestionResource(SuggestionRepository suggestionRepository, UserService userService, UserLevelService userLevelService) {
+    public SuggestionResource(SuggestionRepository suggestionRepository, UserService userService) {
         this.suggestionRepository = suggestionRepository;
         this.userService = userService;
-        this.userLevelService = userLevelService;
     }
 
     /**
@@ -100,22 +92,8 @@ public class SuggestionResource {
         log.debug("REST request to get all Suggestions");
         User user = userService.getUserWithAuthorities().get();
         List<Suggestion> result = new ArrayList<>();
-        List<UserLevel> userLevels = userLevelService.getAllUserLevelsByUserId(user.getId().toString());
-        List<Suggestion> allSuggestion = suggestionRepository.findAll();
-        for(Suggestion suggestion : allSuggestion){
-            if(suggestion.getUser() != null && suggestion.getUser().getId() == user.getId()){
-                result.add(suggestion);
-            }
-            else if(suggestion.getUser() != null){
-                List<UserLevel> userLevelList = userLevels.stream()
-                    .filter(p -> p.getMainUser().getId() == suggestion.getUser().getId()
-                        && p.getLevel() >= suggestion.getUserLevelNumber()).collect(Collectors.toList());
-                if(userLevelList.size() != 0){
-                    result.add(suggestion);
-                }
-            }
-        }
-
+        result.addAll(suggestionRepository.findByUserIsCurrentUser());
+        result.addAll(suggestionRepository.findSuggestionsHasAccess(user.getId()));
         return result;
     }
 

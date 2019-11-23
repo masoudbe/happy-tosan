@@ -21,6 +21,6 @@ public interface UserLevelRepository extends JpaRepository<UserLevel, Long> {
     List<UserLevel> findByUserIsCurrentUser();
 
     @Query("select userLevel from UserLevel userLevel where userLevel.user.id = ?1")
-    List<UserLevel> findByUser(String userId);
+    List<UserLevel> findByUser(Long userId);
 
 }

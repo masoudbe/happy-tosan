@@ -1,5 +1,6 @@
 package com.tosan.betting.web.rest;
 
+import com.tosan.betting.domain.Suggestion;
 import com.tosan.betting.domain.SuggestionComment;
 import com.tosan.betting.repository.SuggestionCommentRepository;
 import com.tosan.betting.web.rest.errors.BadRequestAlertException;
@@ -100,6 +101,18 @@ public class SuggestionCommentResource {
         log.debug("REST request to get SuggestionComment : {}", id);
         Optional<SuggestionComment> suggestionComment = suggestionCommentRepository.findById(id);
         return ResponseUtil.wrapOrNotFound(suggestionComment);
+    }
+
+    @GetMapping("/suggestion-comments/{id}/{findBy}")
+    public List<SuggestionComment> getSuggestionComment(@PathVariable Long id, @PathVariable String findBy) {
+        log.debug("REST request to get SuggestionComment : {}", id);
+        if(findBy.compareTo("suggestion") == 0){
+            Suggestion sg = new Suggestion();
+            sg.setId(id);
+            return suggestionCommentRepository.findBySuggestion(sg);
+        }
+
+        return null;
     }
 
     /**

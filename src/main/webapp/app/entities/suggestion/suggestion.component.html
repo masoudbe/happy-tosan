@@ -28,12 +28,12 @@
                 <p>{{suggestion.comment}}</p>
                 <p>
                     <div *ngIf="suggestion.type">
-                        <a [routerLink]="['../product-type', suggestion.type?.id, 'view' ]" >{{suggestion.type?.id}}</a>
+                        <a [routerLink]="['../product-type', suggestion.type?.id, 'view']" >{{suggestion.type?.id}}</a>
                     </div>
                 </p>
                 <p>
                     <div *ngIf="suggestion.brand">
-                        <a [routerLink]="['../brand', suggestion.brand?.id, 'view' ]" >{{suggestion.brand?.id}}</a>
+                        <a [routerLink]="['../brand', suggestion.brand?.id, 'view']">{{suggestion.brand?.id}}</a>
                     </div>
                 </p>
                 <p>
@@ -56,6 +56,14 @@
                             class="btn btn-danger btn-sm">
                         <fa-icon [icon]="'times'"></fa-icon>
                         <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                    </button>
+                    <button
+                            [routerLink]="['../suggestion-comment', suggestion.id, 'suggestionView']"
+                            replaceUrl="true"
+                            queryParamsHandling="merge"
+                            class="btn btn-danger btn-sm">
+                        <fa-icon [icon]="'times'"></fa-icon>
+                        <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Comment</span>
                     </button>
                 </p>
             </div>

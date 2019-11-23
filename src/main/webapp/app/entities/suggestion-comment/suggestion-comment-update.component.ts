@@ -11,6 +11,7 @@ import { SuggestionCommentService } from './suggestion-comment.service';
 import { IUser, UserService } from 'app/core';
 import { ISuggestion } from 'app/shared/model/suggestion.model';
 import { SuggestionService } from 'app/entities/suggestion';
+import {TrackerMsgService} from "app/core/msgtracker/trackermsg.service";
 
 @Component({
   selector: 'jhi-suggestion-comment-update',
@@ -38,8 +39,11 @@ export class SuggestionCommentUpdateComponent implements OnInit {
     protected userService: UserService,
     protected suggestionService: SuggestionService,
     protected activatedRoute: ActivatedRoute,
-    private fb: FormBuilder
-  ) {}
+    private fb: FormBuilder,
+    protected msgService: TrackerMsgService
+  ) {
+    this.msgService.connect();
+  }
 
   ngOnInit() {
     this.isSaving = false;
@@ -104,6 +108,7 @@ export class SuggestionCommentUpdateComponent implements OnInit {
   protected onSaveSuccess() {
     this.isSaving = false;
     this.previousState();
+    this.sendMessage();
   }
 
   protected onSaveError() {
@@ -119,5 +124,9 @@ export class SuggestionCommentUpdateComponent implements OnInit {
 
   trackSuggestionById(index: number, item: ISuggestion) {
     return item.id;
+  }
+
+  sendMessage(){
+    this.msgService.sendActivity();
   }
 }

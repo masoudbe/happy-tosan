@@ -7,6 +7,7 @@ import { JhiEventManager, JhiAlertService } from 'ng-jhipster';
 import { ISuggestionComment } from 'app/shared/model/suggestion-comment.model';
 import { AccountService } from 'app/core';
 import { SuggestionCommentService } from './suggestion-comment.service';
+import {TrackerMsgService} from "app/core/msgtracker/trackermsg.service";
 
 @Component({
   selector: 'jhi-suggestion-comment',
@@ -21,8 +22,11 @@ export class SuggestionCommentComponent implements OnInit, OnDestroy {
     protected suggestionCommentService: SuggestionCommentService,
     protected jhiAlertService: JhiAlertService,
     protected eventManager: JhiEventManager,
-    protected accountService: AccountService
-  ) {}
+    protected accountService: AccountService,
+    protected msgService: TrackerMsgService
+  ) {
+    this.msgService.connect();
+  }
 
   loadAll() {
     this.suggestionCommentService
@@ -45,6 +49,11 @@ export class SuggestionCommentComponent implements OnInit, OnDestroy {
       this.currentAccount = account;
     });
     this.registerChangeInSuggestionComments();
+
+    this.msgService.subscribe();
+    this.msgService.receive().subscribe(activity => {
+      this.loadAll();
+    });
   }
 
   ngOnDestroy() {

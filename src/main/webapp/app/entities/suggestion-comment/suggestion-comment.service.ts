@@ -38,6 +38,12 @@ export class SuggestionCommentService {
       .pipe(map((res: EntityResponseType) => this.convertDateFromServer(res)));
   }
 
+  findBy(id: number, findBy: string): Observable<EntityResponseType> {
+    return this.http
+      .get<ISuggestionComment>(`${this.resourceUrl}/${id}/${findBy}`, { observe: 'response' })
+      .pipe(map((res: EntityResponseType) => this.convertDateFromServer(res)));
+  }
+
   query(req?: any): Observable<EntityArrayResponseType> {
     const options = createRequestOption(req);
     return this.http

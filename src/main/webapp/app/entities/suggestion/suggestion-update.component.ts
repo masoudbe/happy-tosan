@@ -19,12 +19,10 @@ import { IUser, UserService } from 'app/core';
   templateUrl: './suggestion-update.component.html'
 })
 export class SuggestionUpdateComponent implements OnInit {
+
   isSaving: boolean;
-
   producttypes: IProductType[];
-
   brands: IBrand[];
-
   users: IUser[];
   startDateDp: any;
   endDateDp: any;
