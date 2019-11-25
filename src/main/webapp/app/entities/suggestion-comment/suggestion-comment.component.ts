@@ -4,10 +4,11 @@ import { Subscription } from 'rxjs';
 import { filter, map } from 'rxjs/operators';
 import { JhiEventManager, JhiAlertService } from 'ng-jhipster';
 
-import { ISuggestionComment } from 'app/shared/model/suggestion-comment.model';
+import {ISuggestionComment, SuggestionComment} from 'app/shared/model/suggestion-comment.model';
 import { AccountService } from 'app/core';
 import { SuggestionCommentService } from './suggestion-comment.service';
 import {TrackerMsgService} from "app/core/msgtracker/trackermsg.service";
+import {ActivatedRoute} from "@angular/router";
 
 @Component({
   selector: 'jhi-suggestion-comment',
@@ -23,24 +24,46 @@ export class SuggestionCommentComponent implements OnInit, OnDestroy {
     protected jhiAlertService: JhiAlertService,
     protected eventManager: JhiEventManager,
     protected accountService: AccountService,
-    protected msgService: TrackerMsgService
+    protected msgService: TrackerMsgService,
+    private route: ActivatedRoute
   ) {
     this.msgService.connect();
   }
 
   loadAll() {
-    this.suggestionCommentService
-      .query()
-      .pipe(
-        filter((res: HttpResponse<ISuggestionComment[]>) => res.ok),
-        map((res: HttpResponse<ISuggestionComment[]>) => res.body)
-      )
-      .subscribe(
-        (res: ISuggestionComment[]) => {
-          this.suggestionComments = res;
-        },
-        (res: HttpErrorResponse) => this.onError(res.message)
-      );
+    this.route.url.subscribe()
+    if(this.route.url.value.length == 2){
+      const id = this.route.url.value[0].path;
+      const suggestion = this.route.url.value[1].path;
+      if(suggestion == 'suggestionView') {
+        this.suggestionCommentService
+          .findBy(id, "suggestion")
+          .pipe(
+            filter((res: HttpResponse<ISuggestionComment[]>) => res.ok),
+            map((res: HttpResponse<ISuggestionComment[]>) => res.body)
+          )
+          .subscribe(
+            (res: ISuggestionComment[]) => {
+              this.suggestionComments = res;
+            },
+            (res: HttpErrorResponse) => this.onError(res.message)
+          );
+      }
+    }
+    else {
+      this.suggestionCommentService
+        .query()
+        .pipe(
+          filter((res: HttpResponse<ISuggestionComment[]>) => res.ok),
+          map((res: HttpResponse<ISuggestionComment[]>) => res.body)
+        )
+        .subscribe(
+          (res: ISuggestionComment[]) => {
+            this.suggestionComments = res;
+          },
+          (res: HttpErrorResponse) => this.onError(res.message)
+        );
+    }
   }
 
   ngOnInit() {
