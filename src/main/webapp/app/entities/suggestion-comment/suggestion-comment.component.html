@@ -1,7 +1,7 @@
 <div>
     <h2 id="page-heading">
         <span jhiTranslate="bettingApp.suggestionComment.home.title">Suggestion Comments</span>
-        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-suggestion-comment" [routerLink]="['/suggestion-comment/new']">
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-suggestion-comment" [routerLink]="['/suggestion-comment/new', suggestionId]">
             <fa-icon [icon]="'plus'"></fa-icon>
             <span  jhiTranslate="bettingApp.suggestionComment.home.createLabel">
             Create new Suggestion Comment
@@ -17,26 +17,18 @@
         <table class="table table-striped">
             <thead>
             <tr>
-            <th><span jhiTranslate="global.field.id">ID</span></th>
             <th><span jhiTranslate="bettingApp.suggestionComment.comment">Comment</span></th>
             <th><span jhiTranslate="bettingApp.suggestionComment.date">Date</span></th>
             <th><span jhiTranslate="bettingApp.suggestionComment.user">User</span></th>
-            <th><span jhiTranslate="bettingApp.suggestionComment.suggestion">Suggestion</span></th>
             <th></th>
             </tr>
             </thead>
             <tbody>
             <tr *ngFor="let suggestionComment of suggestionComments ;trackBy: trackId">
-                <td><a [routerLink]="['/suggestion-comment', suggestionComment.id, 'view' ]">{{suggestionComment.id}}</a></td>
                 <td>{{suggestionComment.comment}}</td>
                 <td>{{suggestionComment.date | date:'mediumDate'}}</td>
                 <td>
-                    {{suggestionComment.user?.id}}
-                </td>
-                <td>
-                    <div *ngIf="suggestionComment.suggestion">
-                        <a [routerLink]="['../suggestion', suggestionComment.suggestion?.id, 'view' ]" >{{suggestionComment.suggestion?.id}}</a>
-                    </div>
+                    {{suggestionComment.user?.firstName}}{{suggestionComment.user?.lastName}}
                 </td>
                 <td class="text-right">
                     <div class="btn-group">

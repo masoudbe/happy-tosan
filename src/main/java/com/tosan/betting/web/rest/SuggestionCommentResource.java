@@ -3,10 +3,13 @@ package com.tosan.betting.web.rest;
 import com.tosan.betting.domain.Suggestion;
 import com.tosan.betting.domain.SuggestionComment;
 import com.tosan.betting.repository.SuggestionCommentRepository;
+import com.tosan.betting.security.SecurityUtils;
+import com.tosan.betting.service.UserService;
 import com.tosan.betting.web.rest.errors.BadRequestAlertException;
 
 import io.github.jhipster.web.util.HeaderUtil;
 import io.github.jhipster.web.util.ResponseUtil;
+import org.mapstruct.ap.shaded.freemarker.template.utility.DateUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
@@ -16,6 +19,7 @@ import org.springframework.web.bind.annotation.*;
 import java.net.URI;
 import java.net.URISyntaxException;
 
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
 
@@ -30,13 +34,16 @@ public class SuggestionCommentResource {
 
     private static final String ENTITY_NAME = "suggestionComment";
 
+    private final UserService userService;
+
     @Value("${jhipster.clientApp.name}")
     private String applicationName;
 
     private final SuggestionCommentRepository suggestionCommentRepository;
 
-    public SuggestionCommentResource(SuggestionCommentRepository suggestionCommentRepository) {
+    public SuggestionCommentResource(SuggestionCommentRepository suggestionCommentRepository, UserService userService) {
         this.suggestionCommentRepository = suggestionCommentRepository;
+        this.userService = userService;
     }
 
     /**
@@ -52,6 +59,8 @@ public class SuggestionCommentResource {
         if (suggestionComment.getId() != null) {
             throw new BadRequestAlertException("A new suggestionComment cannot already have an ID", ENTITY_NAME, "idexists");
         }
+        suggestionComment.setDate(LocalDate.now());
+        suggestionComment.setUser(userService.getUserWithAuthorities().get());
         SuggestionComment result = suggestionCommentRepository.save(suggestionComment);
         return ResponseEntity.created(new URI("/api/suggestion-comments/" + result.getId()))
             .headers(HeaderUtil.createEntityCreationAlert(applicationName, true, ENTITY_NAME, result.getId().toString()))

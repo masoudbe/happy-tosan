@@ -60,7 +60,7 @@ export const suggestionCommentRoute: Routes = [
     canActivate: [UserRouteAccessService]
   },
   {
-    path: 'new',
+    path: 'new/:suggestionId',
     component: SuggestionCommentUpdateComponent,
     resolve: {
       suggestionComment: SuggestionCommentResolve

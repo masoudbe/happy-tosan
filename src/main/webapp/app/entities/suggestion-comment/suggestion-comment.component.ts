@@ -18,6 +18,7 @@ export class SuggestionCommentComponent implements OnInit, OnDestroy {
   suggestionComments: ISuggestionComment[];
   currentAccount: any;
   eventSubscriber: Subscription;
+  suggestionId: number;
 
   constructor(
     protected suggestionCommentService: SuggestionCommentService,
@@ -25,19 +26,18 @@ export class SuggestionCommentComponent implements OnInit, OnDestroy {
     protected eventManager: JhiEventManager,
     protected accountService: AccountService,
     protected msgService: TrackerMsgService,
-    private route: ActivatedRoute
+    private activatedRoute: ActivatedRoute
   ) {
     this.msgService.connect();
   }
 
   loadAll() {
-    this.route.url.subscribe()
-    if(this.route.url.value.length == 2){
-      const id = this.route.url.value[0].path;
-      const suggestion = this.route.url.value[1].path;
+    if(this.activatedRoute.url.value.length == 2){
+      this.suggestionId = this.activatedRoute.url.value[0].path;
+      const suggestion = this.activatedRoute.url.value[1].path;
       if(suggestion == 'suggestionView') {
         this.suggestionCommentService
-          .findBy(id, "suggestion")
+          .findBy(this.suggestionId, "suggestion")
           .pipe(
             filter((res: HttpResponse<ISuggestionComment[]>) => res.ok),
             map((res: HttpResponse<ISuggestionComment[]>) => res.body)
