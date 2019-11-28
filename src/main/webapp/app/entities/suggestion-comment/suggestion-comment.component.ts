@@ -8,7 +8,7 @@ import {ISuggestionComment, SuggestionComment} from 'app/shared/model/suggestion
 import { AccountService } from 'app/core';
 import { SuggestionCommentService } from './suggestion-comment.service';
 import {TrackerMsgService} from "app/core/msgtracker/trackermsg.service";
-import {ActivatedRoute} from "@angular/router";
+import {ActivatedRoute, PRIMARY_OUTLET, Router, UrlSegment, UrlSegmentGroup, UrlTree} from "@angular/router";
 
 @Component({
   selector: 'jhi-suggestion-comment',
@@ -26,15 +26,20 @@ export class SuggestionCommentComponent implements OnInit, OnDestroy {
     protected eventManager: JhiEventManager,
     protected accountService: AccountService,
     protected msgService: TrackerMsgService,
-    private activatedRoute: ActivatedRoute
+    private activatedRoute: ActivatedRoute,
+    private router: Router
   ) {
     this.msgService.connect();
   }
 
   loadAll() {
-    if(this.activatedRoute.url.value.length == 2){
-      this.suggestionId = this.activatedRoute.url.value[0].path;
-      const suggestion = this.activatedRoute.url.value[1].path;
+    const tree: UrlTree = this.router.parseUrl(this.router.url);
+    const g: UrlSegmentGroup = tree.root.children[PRIMARY_OUTLET];
+    const s: UrlSegment[] = g.segments;
+
+    if(s.length == 3){
+      this.suggestionId = +s[1].path;
+      const suggestion = s[2].path;
       if(suggestion == 'suggestionView') {
         this.suggestionCommentService
           .findBy(this.suggestionId, "suggestion")

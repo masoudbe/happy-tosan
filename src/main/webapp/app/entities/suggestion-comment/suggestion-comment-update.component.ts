@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpResponse, HttpErrorResponse } from '@angular/common/http';
 import { FormBuilder, Validators } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
+import {ActivatedRoute, PRIMARY_OUTLET, Router, UrlSegment, UrlSegmentGroup, UrlTree} from '@angular/router';
 import { Observable } from 'rxjs';
 import { filter, map } from 'rxjs/operators';
 import { JhiAlertService } from 'ng-jhipster';
@@ -32,7 +32,8 @@ export class SuggestionCommentUpdateComponent implements OnInit {
     protected suggestionService: SuggestionService,
     protected activatedRoute: ActivatedRoute,
     private fb: FormBuilder,
-    protected msgService: TrackerMsgService
+    protected msgService: TrackerMsgService,
+    private router: Router
   ) {
     this.msgService.connect();
   }
@@ -42,7 +43,12 @@ export class SuggestionCommentUpdateComponent implements OnInit {
     this.activatedRoute.data.subscribe(({ suggestionComment }) => {
       this.updateForm(suggestionComment);
     });
-    this.suggestionId = this.activatedRoute.url.value[1].path;
+
+    const tree: UrlTree = this.router.parseUrl(this.router.url);
+    const g: UrlSegmentGroup = tree.root.children[PRIMARY_OUTLET];
+    const s: UrlSegment[] = g.segments;
+    const c = this.activatedRoute.params['suggestionId'];
+    this.suggestionId = +s[2].path;
 
     this.suggestionService
       .query()
